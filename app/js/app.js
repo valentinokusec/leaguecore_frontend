@@ -22,19 +22,15 @@ var app = angular.module('app', [
   'matchServices',
   'authservice',
   'notificationModule',
-  'ui.bootstrap',
   'ngCookies',
-  'facebook',
-  'duScroll',
-   'angular-google-gapi',
-   "chart.js",
+
 ]);
 
-app.config(['$routeProvider','FacebookProvider','ChartJsProvider',
-  function($routeProvider,FacebookProvider,ChartJsProvider  ) {
+app.config(['$routeProvider',
+  function($routeProvider  ) {
 
 
-     FacebookProvider.init('295542314138182');
+ 
 
 
     $routeProvider.
@@ -88,7 +84,7 @@ app.config(['$routeProvider','FacebookProvider','ChartJsProvider',
       positionY: 'top'
     });
   });
-  app.run( function($rootScope, $location, $cookies, $routeParams,GAuth, GApi, GData,GetRandomMessage) {
+  app.run( function($rootScope, $location, $cookies, $routeParams,GetRandomMessage) {
 
 
     $rootScope.$on("$routeChangeStart", function(args){

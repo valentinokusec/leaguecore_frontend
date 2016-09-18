@@ -1,8 +1,8 @@
 
 
 var landingControllers = angular.module('landingControllers', []);
-landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$rootScope','$cookies','GData','$rootScope',
-  function($scope,$location, $http,$rootScope,$cookies,GData,$rootScope) {
+landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$rootScope','$cookies' ,'$rootScope',
+  function($scope,$location, $http,$rootScope,$cookies,$rootScope) {
 
 
 
