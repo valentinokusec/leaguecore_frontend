@@ -1,0 +1,522 @@
+
+<div class="loader" ng-if='loading_data==true'>
+  <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+   <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+    c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+    c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="1s"
+           from="0 50 50"
+           to="-360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+    L82,35.7z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+  </svg>
+</div>
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+<div class="no_game" ng-if='votes_submited==true' style="left: 23%;">
+Thank you for making league community a better place.
+</div>
+<div class="match" id="match" style="margin-top:2%;">
+<table>
+<tr>
+  <td>
+    <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element match_element match_element">
+      <tr>
+        <td>
+          <div id="team_1_player_1" >
+            <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_1.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_1">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_1.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_1.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_1.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td style="height: 60px;">
+          <h3 id="name_1"  style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_1.name}}</h3>
+        </td>
+      </tr>
+      <tr id="heart_click" ng-click="vote(1)" class="mdl-card__actions mdl-card--border">
+        <td>
+          <div class="line">
+
+          </div>
+            <i class="fa fa-heart fa-3x" id="heart_1" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr id="player_1">
+        <td>
+          <textarea placeholder="Please say something nice"  id="textarea_1" name="name" rows="8" cols="40"></textarea>
+        </td>
+      </tr>
+    </table>
+</td>
+<td>
+  <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element match_element match_element">
+    <tr>
+      <td>
+         <div id="team_1_player_2" >
+            <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_2.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_2">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_2.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_2.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_2.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td style="height: 60px;">
+        <h3 id="name_2" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; "class="mdl-card__title-text">{{champ_2.name}}</h3>
+      </td>
+    </tr>
+    <tr id="heart_click" ng-click="vote(2)" class="mdl-card__actions mdl-card--border">
+      <td>
+        <div class="line">
+
+        </div>
+          <i class="fa fa-heart fa-3x" id="heart_2" aria-hidden="true"></i>
+      </td>
+    </tr>
+    <tr id="player_2">
+      <td>
+        <textarea placeholder="Please say something nice" id="textarea_2" name="name" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+  </table>
+</td>  <td>
+    <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+      <tr>
+        <td>
+          <div id="team_1_player_3" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_3.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_3">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_3.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_3.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_3.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td style="height: 60px;">
+          <h3 id="name_3" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_3.name}}</h3>
+        </td>
+      </tr>
+      <tr id="heart_click" ng-click="vote(3)" class="mdl-card__actions mdl-card--border">
+        <td>
+          <div class="line">
+
+          </div>
+            <i class="fa fa-heart fa-3x" id="heart_3" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr id="player_3">
+        <td>
+          <textarea placeholder="Please say something nice" id="textarea_3" name="name" rows="8" cols="40"></textarea>
+        </td>
+      </tr>
+    </table>
+</td>
+
+<td>
+    <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+      <tr>
+        <td>
+             <div id="team_1_player_4" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_4.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_4">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_4.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_4.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_4.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td style="height: 60px;">
+          <h3 id="name_4" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_4.name}}</h3>
+        </td>
+      </tr>
+      <tr id="heart_click"  ng-click="vote(4)" class="mdl-card__actions mdl-card--border">
+        <td>
+          <div class="line">
+
+          </div>
+            <i class="fa fa-heart fa-3x" id="heart_4" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr id="player_4">
+        <td>
+          <textarea placeholder="Please say something nice" id="textarea_4" name="name" rows="8" cols="40"></textarea>
+        </td>
+      </tr>
+    </table>
+</td>  <td>
+    <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+      <tr>
+        <td>
+           <div id="team_1_player_5" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_5.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_5">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_5.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_5.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_5.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td style="height: 60px;">
+          <h3 id="name_5" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_5.name}}</h3>
+        </td>
+      </tr>
+      <tr id="heart_click"  ng-click="vote(5)" class="mdl-card__actions mdl-card--border">
+        <td>
+          <div class="line">
+
+          </div>
+            <i class="fa fa-heart fa-3x" id="heart_5" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr id="player_5">
+        <td>
+          <textarea placeholder="Please say something nice" id="textarea_5" name="name" rows="8" cols="40"></textarea>
+        </td>
+      </tr>
+    </table>
+</td>
+  </tr>
+  <td>
+    <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+      <tr>
+        <td>
+           <div id="team_1_player_6" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_6.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_6">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_6.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_6.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_6.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td style="height: 60px;">
+          <h3 id="name_6" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_6.name}}</h3>
+        </td>
+      </tr>
+      <tr id="heart_click" ng-click="vote(6)" class="mdl-card__actions mdl-card--border">
+        <td>
+          <div class="line">
+
+          </div>
+            <i class="fa fa-heart fa-3x" id="heart_6" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr id="player_6">
+        <td>
+          <textarea placeholder="Please say something nice" id="textarea_6" name="name" rows="8" cols="40"></textarea>
+        </td>
+      </tr>
+    </table>
+</td>
+<td>
+  <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+    <tr>
+      <td>
+         <div id="team_1_player_7" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_7.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_7">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_7.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_7.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_7.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td style="height: 60px;">
+        <h3 id="name_7" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_7.name}}</h3>
+      </td>
+    </tr>
+    <tr id="heart_click" ng-click="vote(7)" class="mdl-card__actions mdl-card--border">
+      <td>
+        <div class="line">
+
+        </div>
+          <i class="fa fa-heart fa-3x" id="heart_7" aria-hidden="true"></i>
+      </td>
+    </tr>
+    <tr id="player_7">
+      <td>
+        <textarea placeholder="Please say something nice" id="textarea_7" name="name" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+  </table>
+</td>
+<td>
+  <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+    <tr>
+      <td>
+         <div id="team_1_player_8" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_8.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_8">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_8.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_8.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_8.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td style="height: 60px;">
+        <h3 id="name_8" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_8.name}}</h3>
+      </td>
+    </tr>
+    <tr id="heart_click" ng-click="vote(8)" class="mdl-card__actions mdl-card--border">
+      <td>
+        <div class="line">
+
+        </div>
+          <i class="fa fa-heart fa-3x" id="heart_8" aria-hidden="true"></i>
+      </td>
+    </tr>
+    <tr id="player_8">
+      <td>
+        <textarea placeholder="Please say something nice" id="textarea_8" name="name" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+  </table>
+</td>
+<td>
+  <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+    <tr>
+      <td>
+           <div id="team_1_player_9" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_9.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_79">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_9.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_9.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_9.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td style="height: 60px;">
+        <h3 id="name_9" style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_9.name}}</h3>
+      </td>
+    </tr>
+    <tr id="heart_click" ng-click="vote(9)" class="mdl-card__actions mdl-card--border">
+      <td>
+        <div class="line">
+
+        </div>
+          <i class="fa fa-heart fa-3x" id="heart_9" aria-hidden="true"></i>
+      </td>
+    </tr>
+    <tr id="player_9">
+      <td>
+        <textarea placeholder="Please say something nice" id="textarea_9" name="name" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+  </table>
+</td>
+<td>
+  <table class="demo-card-wide mdl-card mdl-shadow--2dp element match_element">
+    <tr>
+      <td>
+         <div id="team_1_player_10" >
+               <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_10.champ}}.png" class="img_card_match"></img>
+
+            </div>
+          
+          <table class="stats_match kda" style="margin-top:10px;" id="stats_match_7">
+            <tr>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_10.kills | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_10.deaths | limitTo:4}}</p>
+              </td>
+              <td>
+                <p class="kda_text" style="margin-top:20px;">{{champ_10.assists | limitTo:4}}</p>
+              </td>
+            </tr>
+          </table>
+          </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td style="height: 60px;">
+        <h3 id="name_10"style="margin-left:45px !important; font-weight:bold; margin-top:10px !important; color:#374d5a !important; " class="mdl-card__title-text">{{champ_10.name}}</h3>
+      </td>
+    </tr>
+    <tr id="heart_click" ng-click="vote(10)" class="mdl-card__actions mdl-card--border">
+      <td>
+        <div class="line">
+
+        </div>
+          <i class="fa fa-heart fa-3x" id="heart_10" aria-hidden="true"></i>
+      </td>
+    </tr>
+    <tr id="player_10">
+      <td>
+        <textarea placeholder="Please say something nice" id="textarea_10" name="name" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+  </table>
+</td>
+    </tr>
+</table>
+    </div>
+
+
+    <button ng-click="submitVotes()" id="submit_votes" type="button" class="submit_votes"><i class="fa fa-check fa-4x" aria-hidden="true"></i></button>

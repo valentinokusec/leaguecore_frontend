@@ -1,0 +1,216 @@
+
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+<div class="loader" ng-if='loading_data==true'>
+  <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+   <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+    c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+    c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="1s"
+           from="0 50 50"
+           to="-360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+    L82,35.7z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+  </svg>
+</div>
+
+
+<div id="history" class="row   board_row" ng-repeat="vote in votes | limitTo:5:skip" ng-if='loading_data==false'>
+      <div class="col-md-5">
+            </div>
+  <div class="col-md-6">
+    <div class="  message_main" id="{{user.match_id}}" style="margin:0px; margin-top:50px;" ng-repeat="user in vote.votes | limitTo:5:skip">
+      <!-- <div class="vote_line">
+
+      </div> -->
+    <table class="message">
+      <tr>
+        <td>
+          <p >
+                From    {{user.from}}
+          </p>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+                    {{user.data}}
+          </p>
+        </td>
+      </tr>
+
+    </table>
+    <div class="">
+      <table class="stats kda" id="{{user.match_id}}_stats" style="margin:15px;" >
+        <tr>
+
+          <td>
+            <img style="width:50px; height:50px;" src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{vote.details.champion}}.png" class="img_card_main_match"></img>
+          </td>
+
+
+
+          <td>
+            <p class="kda_text">{{vote.details.kills | limitTo:4}}</p>
+          </td>
+          <td>
+            <p class="kda_text">{{vote.details.deaths | limitTo:4}}</p>
+          </td>
+          <td>
+            <p class="kda_text">{{vote.details.assists | limitTo:4}}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="pagination" ng-if="loading_data==false" style="left:43%">
+      <table>
+        <tr>
+          <td>
+            <div class="" style="height: 50px !important; display:none;" id="decrease_pagination"><button  ng-click="decrease_pagination()" class="kda_text_main kda_text" style="padding-top:0px !important;"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></div>
+
+          </td>
+          <td>
+            <div class="" style="height: 50px !important;"><button class="kda_text_main kda_text" style="padding-top:0px !important;">{{pagination_number}}</button></div>
+
+          </td>
+          <td>
+            <div class="  " style="height: 50px !important; " id="increase_pagination"> <button ng-click="increase_pagination()" class="kda_text_main kda_text" style="padding-top:0px !important;"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></div></td>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- <div class="left_sidebar_main_history" ng-if='loading_votes==false'>
+
+      <table class="recent_votes kda">
+        <tr>
+          <td ng-if='show_recent_votes==true'>
+            Messages from the last game
+          </td>
+          <td ng-if='show_recent_votes==false'>
+            Messages From the Selected game
+          </td>
+        </tr>
+      </table>
+      <table class="votes_sidebar ">
+        <tr ng-repeat="user in messages">
+
+          <td>
+            <b>{{user.from}} said:</b>
+
+          </td>
+          <td>
+            {{user.data}}
+          </td>
+        </tr>
+
+
+      </table>
+    </div> -->
+    <!-- <div class="left_sidebar_votes" ng-if='loading_votes==false'>
+
+      <table class="recent_votes kda">
+        <tr>
+          <td ng-if='show_recent_votes==true'>
+            Stats from the last game
+          </td>
+          <td ng-if='show_recent_votes==false'>
+            Stats From the Selected game
+          </td>
+        </tr>
+      </table>
+      <table class="votes_sidebar ">
+        <tr>
+          <td>
+            <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{stats.champion}}.png" class="img_card_main">
+                  </img>
+          </td>
+          <td>
+            <b>{{stats.champion}}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <div  class="kda_text_main kda_text" >{{stats.kills}}</div>
+          </td>
+          <td>
+             <div  class="kda_text_main kda_text" >{{stats.deaths}}</div>
+          </td>
+          <td>
+             <div  class="kda_text_main kda_text" >{{stats.assists}}</div>
+          </td>
+        </tr>
+        <tr>
+          <table class="kda" style=" margin-left: 12px;  margin-top: 10px;">
+            <tr>
+              <td>
+                <img ng-if='stats.item_0!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{stats.item_0}}.png" class="item_image" />
+                <img ng-if='stats.item_0==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+                <img ng-if='stats.item_1!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{stats.item_1}}.png" class="item_image" />
+                <img ng-if='stats.item_1==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+
+                <img ng-if='stats.item_2!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{stats.item_2}}.png" class="item_image" />
+                <img ng-if='stats.item_2==0' src="static/blank_item.png" class="item_image" />
+              </td>
+            </tr>
+            <tr >
+
+              <td>
+                <img ng-if='stats.item_3!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{stats.item_3}}.png" class="item_image" />
+                <img ng-if='stats.item_3==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+                <img ng-if='stats.item_4!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{stats.item_4}}.png" class="item_image" />
+                <img ng-if='stats.item_4==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+                <img ng-if='stats.item_5!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{stats.item_5}}.png" class="item_image" />
+                <img ng-if='stats.item_5==0' src="static/blank_item.png" class="item_image" />
+              </td>
+
+            </tr>
+
+          </table>
+        </tr>
+
+      </table>
+    </div> -->

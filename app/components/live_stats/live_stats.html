@@ -1,0 +1,391 @@
+<div class="loader" ng-if='loading_data==true'>
+  <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+   <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+    c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+    c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="1s"
+           from="0 50 50"
+           to="-360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+    L82,35.7z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+  </svg>
+</div>
+<!--<div class="toggle_live_buttons" ng-if='loading_data==false && no_game==false'>
+  <button  ng-click="toggle_live('champ-panel')" class="mdl-tabs__tab is-active">Champ</button>
+  <button  ng-click="toggle_live('main-panel')" class="mdl-tabs__tab">Overall</button>
+</div>-->
+<div class="no_game" ng-if='no_game==true'>
+No active game found!
+</div>
+<div class="right_stats">
+  <h1>Important facts</h1>
+  <table>
+    <tr><td>Biggest kda<span class="kdd">:</span> dd</td></tr>
+    <tr><td>Biggest kda:</td></tr>
+  </table>
+
+</div>
+    <div class="match" id="match" style="margin-top:3%;">
+
+    <table >
+
+    <tr class="role">
+      <td >
+      TOP   
+      </td>
+      <td >
+        TOP   
+      </td>
+
+<td >
+  TOP   
+      </td>
+
+<td >
+  TOP   
+      </td>
+
+<td >
+TOP     
+      </td>
+
+
+      </tr>
+    <tr>
+      <td   ng-repeat="champion in live_stats | limitTo:5">
+
+        <div id="team_1_player_1" class="demo-card-wide mdl-card mdl-shadow1--2dp element element_size">
+
+          <div class="mdl-card__title">
+            <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champion.champion_name}}.png" class="img_card live_stats_size"></img>
+
+
+          </div>
+
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+
+          <table  class="champ-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1:1">
+
+            <tr>
+              <td>
+              <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.kills_per_game}}<span class="kdd">/</span></p></div>
+              <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.assists_per_game}}<span class="kdd">/</span></p></div>
+              <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.deaths_per_game}}</p></div>
+
+              </td>
+
+
+            </tr>
+            <tr>
+                <td>
+              <p class="col-md-5" style="font-weight:bold; margin-top:13px;  color: #374d5a;">
+                Winrate<span class="kdd">:</span>
+              </p>
+              <div class="col-md-5 " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.winrate | limitTo:3}}</p></div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  <p class="col-md-5 kda_text_live1" style="font-weight:bold; color: #374d5a;" >
+                    Games played<span class="kdd">:</span>
+                  </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.games_played}}</p></div>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="" ng-repeat="history in champion.history | limitTo:5">
+                  <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
+                  <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table  class="main-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1">
+            <tr>
+              <td>
+                <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.kills_per_game}}</p>/</div>
+              <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.assists_per_game}}</p></div>
+              <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.deaths_per_game}}</p></div>
+
+              </td>
+
+
+            </tr>
+            <tr>
+                <td>
+              <p class="col-md-5" style="font-weight:bold; margin-top:10px;">
+                Winrate
+              </p>
+              <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.winrate | limitTo:3}}</p></div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  <p class="col-md-5" style="font-weight:bold;" >
+                    Games played
+                  </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.games_played}}</p></div>
+
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="" ng-repeat="history in champion.history | limitTo:5">
+                  <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
+                  <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
+                </div>
+
+
+
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <table>
+
+
+  </table>
+        </div>
+    </td>
+
+      </tr>
+      <tr>
+        <td   ng-repeat="champion in live_stats | limitTo:5:5">
+          <div id="team_1_player_1" class="demo-card-wide mdl-card mdl-shadow1--2dp element element_size">
+
+            <div class="mdl-card__title">
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champion.champion_name}}.png" class="img_card live_stats_size"></img>
+
+
+            </div>
+
+            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+
+            <table  class="champ-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1:1">
+
+              <tr>
+                <td>
+                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.kills_per_game}}</p></div>
+                <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.assists_per_game}}</p></div>
+                <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.deaths_per_game}}</p></div>
+
+                </td>
+
+
+              </tr>
+              <tr>
+                  <td>
+                <p class="col-md-5" style="font-weight:bold; margin-top:10px;">
+                  Winrate
+                </p>
+                <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.winrate | limitTo:3}}</p></div>
+
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                    <p class="col-md-5" style="font-weight:bold;" >
+                      Games played
+                    </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.games_played}}</p></div>
+                  </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="" ng-repeat="history in champion.history | limitTo:5">
+                    <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
+                    <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <table  class="main-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1">
+              <tr>
+                <td>
+                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.kills_per_game}}</p></div>
+                <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.assists_per_game}}</p></div>
+                <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.deaths_per_game}}</p></div>
+
+                </td>
+
+
+              </tr>
+              <tr>
+                  <td>
+                <p class="col-md-5" style="font-weight:bold; margin-top:10px;">
+                  Winrate
+                </p>
+                <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.winrate | limitTo:3}}</p></div>
+
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                    <p class="col-md-5" style="font-weight:bold;" >
+                      Games played
+                    </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.games_played}}</p></div>
+
+                  </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="" ng-repeat="history in champion.history | limitTo:5">
+                    <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
+                    <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
+                  </div>
+
+
+
+                </td>
+              </tr>
+            </table>
+          </div>
+
+
+          </div>
+      </td>
+
+        </tr>
+
+    </table>
+        </div>
+
+  </div>
+
+
+
+
+
+  <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+
+
+    <script src="js/segment.min.js"></script>
+    <script src="js/jquery.fullpage.js"></script>
+
+    <script defer src="js/material.js"></script>
+    <script>
+    $(document).ready(function() {
+
+      function hide_all() {
+        $("#team_1_player_1").css("display", "none");
+        $("#team_1_player_2").css("display", "none");
+        $("#team_1_player_3").css("display", "none");
+        $("#team_1_player_4").css("display", "none");
+        $("#team_1_player_5").css("display", "none");
+        $("#team_2_player_1").css("display", "none");
+        $("#team_2_player_2").css("display", "none");
+        $("#team_2_player_3").css("display", "none");
+        $("#team_2_player_4").css("display", "none");
+        $("#team_2_player_5").css("display", "none");
+        $("#premades_team_1_player_1").css("display", "none");
+        $("#premades_team_1_player_2").css("display", "none");
+        $("#premades_team_1_player_3").css("display", "none");
+        $("#premades_team_1_player_4").css("display", "none");
+        $("#premades_team_1_player_5").css("display", "none");
+        $("#premades_team_2_player_1").css("display", "none");
+        $("#premades_team_2_player_2").css("display", "none");
+        $("#premades_team_2_player_3").css("display", "none");
+        $("#premades_team_2_player_4").css("display", "none");
+        $("#premades_team_2_player_5").css("display", "none");
+}
+      function fade_1() {
+              $("#team_1_player_2").fadeIn(500);
+              $("#team_2_player_2").fadeIn(500);
+         }
+         function fade_2() {
+                 $("#team_1_player_3").fadeIn(500);
+                  $("#team_2_player_3").fadeIn(500);
+            }
+            function fade_3() {
+                    $("#team_1_player_4").fadeIn(500);
+                     $("#team_2_player_4").fadeIn(500);
+               }
+               function fade_4() {
+                       $("#team_1_player_5").fadeIn(500);
+                        $("#team_2_player_5").fadeIn(500);
+                  }
+                  function premades_fade_1() {
+                          $("#premades_team_1_player_2").fadeIn(500);
+                          $("#premades_team_2_player_2").fadeIn(500);
+                     }
+                     function premades_fade_2() {
+                       $("#premades_team_1_player_3").fadeIn(500);
+                       $("#premades_team_2_player_3").fadeIn(500);
+                        }
+                        function premades_fade_3() {
+                          $("#premades_team_1_player_4").fadeIn(500);
+                          $("#premades_team_2_player_4").fadeIn(500);
+                           }
+                           function premades_fade_4() {
+                             $("#premades_team_1_player_5").fadeIn(500);
+                             $("#premades_team_2_player_5").fadeIn(500);
+                              }
+
+    function closePicker() {
+
+        document.getElementById("overlay").className = "overlay";
+    }
+    function showProgress() {
+
+        document.getElementById("p2").style.visibility = "visible";
+    }
+    function myFunction() {
+        document.getElementById("overlay").className += " open";
+    }
+    (function() {
+      'use strict';
+      var snackbarContainer = document.querySelector('#demo-snackbar-example');
+      var showSnackbarButton = document.querySelector('#demo-show-snackbar');
+      var handler = function(event) {
+        showSnackbarButton.style.backgroundColor = '';
+      };
+      showSnackbarButton.addEventListener('click', function() {
+        'use strict';
+
+        var data = {
+          message: 'Looking for summoner!',
+          timeout: 4000,
+          actionHandler: handler,
+          actionText: 'Ok'
+        };
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+      });
+    }());
+</script>
+</body>
+
+</html>

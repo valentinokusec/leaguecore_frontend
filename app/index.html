@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>League Core</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+  <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
+  <link rel="stylesheet" href="bower_components/css-hamburgers/dist/hamburgers.css">
+
+  <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/file-saver.js/FileSaver.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/modernizr.custom.js"></script>
+  <script src="css/modernizr.custom.js"></script>
+  <script src="js/dialogFx.js"></script>
+
+  <script src="components/login/loginctrl.js"></script>
+  <script src="components/main/mainctrl.js"></script>
+  <script src="components/leadboard/leadboardctrl.js"></script>
+  <script src="components/match/matchctrl.js"></script>
+  <script src="components/live_stats/livestatsctrl.js"></script>
+  <script src="components/submit_votes/submitvotesctrl.js"></script>
+  <script src="components/submit_votes/submitvotesservice.js"></script>
+  <script src="components/index/landingctrl.js"></script>
+  <script src="components/votes/votesctrl.js"></script>
+  <script src="js/filters.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
+  <script src="js/services.js"></script>
+  <script src="components/leadboard/leadboardservice.js"></script>
+  <script src="components/login/authservice.js"></script>
+  <script src="components/live_stats/livestatsservice.js"></script>
+  <script src="components/main/mainservice.js"></script>
+  <script src="components/match/matchservice.js"></script>
+  <script src="components/votes/votesservice.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/Chart.js/Chart.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+  <script src="/node_modules/angular-material/angular-material.js"></script>
+  <script src="/node_modules/angular-aria/angular-aria.js"></script>
+  <script src="/node_modules/angular-cookies/angular-cookies.js"></script>
+  <!-- google maps -->
+  <script src='bower_components/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+  <script src='bower_components/lodash/dist/lodash.min.js'></script>
+<script src='bower_components/angular-facebook/lib/angular-facebook.js'></script>
+<script src='bower_components/angular-google-gapi/dist/angular-google-gapi.js'></script>
+
+  <script src='bower_components/angular-google-maps/dist/angular-google-maps.min.js?key=AIzaSyC_rI-NH8XDf04uTbothlPTcZKcdF-wFUY'></script>
+  <script src='//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyC_rI-NH8XDf04uTbothlPTcZKcdF-wFUY'></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/material.css">
+  <link href="css/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="css/set1.css" type="text/css" rel="stylesheet">
+    <link href="css/dialog-sandra.css" type="text/css" rel="stylesheet">
+    <link href="css/effect1.css" type="text/css" rel="stylesheet">
+    <link href="css/set2.css" type="text/css" rel="stylesheet">
+    <link href="css/layout-simple.css" type="text/css" rel="stylesheet">
+
+  <link href="css/custom-min.css" type="text/css" rel="stylesheet" >
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script src="css/classie.js"></script>
+
+<script src="css/pathLoader.js"></script>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <script src="https://use.fontawesome.com/850a37aa7e.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+      <script src="js/jquery.js"></script>
+    <script src="js/owl.carousel.js"></script>
+  <!-- Scrolling Nav JavaScript -->
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="bower_components/angular-scroll/angular-scroll.js"></script>
+  <script src="js/segment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/material.css">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+  <script defer src="js/material.js"></script>
+</head>
+<body >
+  <div class="overlay_black">
+
+  </div>
+  <div id="somedialog" class="dialog_main">
+    <div class="line_dialog">
+
+    </div>
+      <h2><strong>Howdy</strong>, I'm a dialog box</h2><div><button class="action" data-dialog-close>Close</button></div>
+    </div>
+
+  <div class="navbar-fixed" ng-if='show_index==false'>
+     <nav id="nav_f" class="default_color" role="navigation">
+         <div class="container">
+             <div class="nav-wrapper">
+             <!-- <a href="#" id="logo-container" class="brand-logo"><img src="static/make_it_count_logo.png"></img></a> -->
+             <a href="#"  ><p class="logo">L</p></a>
+             <div class="profile_loc" style="width:250px"  ng-if='show_index==false'>
+               <table class=" kda" style="margin-top:1px; width="200px" " id="stats_profile">
+                    <tr>
+
+                      <td>
+
+                      </td>
+
+
+
+                      <td>
+
+                       <a href="#match/{{profile_name}}" style="text-decoration: none;">  <i style="height:60px;"  class="fa fa-heart " aria-hidden="true"></i></a>
+
+                      </td>
+                      <td>
+                          <a href="#livestats/{{profile_name}}" style="text-decoration: none;">  <i style="height:60px;"  class="fa fa-pie-chart " aria-hidden="true"></i></a>
+                      </td>
+                      <td>
+
+                           <a href="#submitvotes/{{profile_name}}" style="text-decoration: none;">  <i style="height:60px;"  class="fa fa-envelope " aria-hidden="true"></i></a>
+                      </td>
+                      <td>
+                      <div id="profile_info" >
+                            <span class="profile_name">{{profile_name}}</span>
+
+
+
+                                  <div style="color:#374d5a" class="profile_stats kda" style="margin-top:1px;" id="stats_profile">
+                                   logout
+
+
+
+
+
+                                </div>
+
+                              </div>
+                      </td>
+                    </tr>
+                  </table>
+
+
+
+
+              <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+
+                   </div>
+             </div>
+         </div>
+     </nav>
+  </div>
+  <!-- <div class="loader_index" ng-if='loading_data==true  && show_index==false'>
+    <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+  <path opacity="0.2" fill="#ff4081" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+  <path fill="#ff4081" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+    C22.32,8.481,24.301,9.057,26.013,10.047z">
+    <animateTransform attributeType="xml"
+      attributeName="transform"
+      type="rotate"
+      from="0 20 20"
+      to="360 20 20"
+      dur="0.5s"
+      repeatCount="indefinite"/>
+    </path>
+  </svg>
+
+  </div>
+
+<div class="main_stats" ng-if='loading_data==false && show_index==false'>
+
+  <table class="index_champion_table">
+    <tr class="main_data">
+      <td>
+            <div class="col-md-2">
+
+
+      </div>
+
+    <div class="col-md-2">
+      <table class="kda">
+
+        <tr >
+          <td>
+            <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_main kda_text">{{champion.kills_per_game}}</p></div>
+          <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_main kda_text">{{champion.assists_per_game}}</p></div>
+          <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_main kda_text">{{champion.deaths_per_game}}</p></div></td>
+        </tr>
+        <tr >
+          <td>
+            <div class="col-md-3"><p class=""></div>
+          <div class="col-md-3"><p class="">KDA</p></div>
+          <div class="col-md-3  "><p class=""></div></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2">
+<table>
+  <tr>
+    <td>
+
+      <canvas id="bar" class="chart chart-pie" style="    margin-bottom: 10px;"
+      chart-data="winrate_data" chart-labels="labels" chart-colours="colours"/>
+    </td>
+    <td>  <canvas id="bar" class="chart chart-pie"
+      chart-data="recent_winrate_data" chart-labels="labels" chart-colours="colours"/>
+
+    </td>
+  </tr>
+  <tr>
+    <td style="color:white; font-weight:bold;margin-top:10px;">
+      Winrate
+    </td>
+    <td style="color:white; font-weight:bold;margin-top:10px;">
+      Last 10 games
+    </td>
+  </tr>
+</table>
+</div>
+<div class="col-md-2">
+<table style="height: 100px !important;">
+<tr>
+<td>
+
+  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_main kda_text">{{champion.games_played}}</p></div>
+
+</td>
+<td>
+  <div class="material-icons mdl-badge mdl-badge--overlap " data-badge="1"><img src="static/heart.png" class="img_card " ></img></div>
+
+
+</td>
+
+</tr>
+<tr>
+<td style="color:white; font-weight:bold;margin-top:10px;">
+  Games played
+</td>
+<td style="color:white; font-weight:bold;margin-top:10px;">
+  Nice list
+</td>
+</tr>
+</table>
+</div>
+</td>
+
+  </tr>
+    <!-- <tr><td colspan="3" id="hide_data"><p></p>
+    </td></tr> -->
+
+</table>
+  <!-- <div class="material-icons mdl-badge mdl-badge--overlap stats_badge" data-badge="1"><img src="static/emoticon.png" class="img_card img_card_right" ></img></div>
+  <div class="material-icons mdl-badge mdl-badge--overlap stats_badge" data-badge="1"><img src="static/emoticon-sad.png" class="img_card img_card_right" ></img></div>
+  <div class="material-icons mdl-badge mdl-badge--overlap stats_badge" data-badge="1"><img src="static/emoticon-cool.png" class="img_card img_card_right" ></img></div> -->
+
+
+</div> -->
+<div class="  message_main" id="message_index1" ng-if='show_index==false'>
+<table class="message" id="message">
+  <tr>
+    <td>
+      <p>
+                {{message.from}} to {{message.to}}:
+      </p>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+
+
+                    <p style="font-size:30px;font-weight:bold;" class="col-md-9 quote">
+                       {{message.data}}
+                       </p>
+
+
+
+    </td>
+  </tr>
+
+</table>
+<div class="">
+  <table class="stats kda" style="margin:15px;" id="stats_index">
+    <tr>
+
+      <td>
+        <img style="width:50px; height:50px;" src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{stats.champion}}.png" class="img_card_main_match"></img>
+      </td>
+
+
+
+      <td>
+        <p class="kda_text">{{stats.kills | limitTo:4}}</p>
+      </td>
+      <td>
+        <p class="kda_text">{{stats.deaths | limitTo:4}}</p>
+      </td>
+      <td>
+        <p class="kda_text">{{stats.assists | limitTo:4}}</p>
+      </td>
+      <td>
+        <p ng-click="gameDetail()" class="kda_text" data-dialog="somedialog"><i class="fa fa-question" aria-hidden="true"></i></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+</div>
+
+  <div class="menu" ng-if='show_index==false'>
+
+          <div class="col-md-3">
+            <table>
+              <tr>
+                <td style="width: 200px;">
+                  <a href="#main/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-home" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
+                </td>
+                  <td style="width: 200px;">
+                  <a href="#main/{{profile_name}}" style="padding-right:30px;">Main</a>
+                </td>
+               <td style="width: 200px;">
+                  <a href="#leadboard/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-bars" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
+                </td>
+                  <td style="width: 200px;">
+                  <a href="#leadboard/{{profile_name}}" style="padding-right:30px;">Leadboard</a>
+                </td>
+
+                 <td style="width: 200px;">
+                  <a href="#votes/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-comment" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
+                </td>
+                  <td style="width: 200px;">
+                  <a href="#votes/{{profile_name}}" style="padding-right:30px;">Dash</a>
+                </td>
+                 <td style="width: 200px;">
+                  <a href="#match/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-question" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
+                </td>
+                  <td style="width: 200px;">
+                  <a href="#match/{{profile_name}}" style="padding-right:30px;">About</a>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+
+  </div>
+  <!-- <a href="#livestats" class="kda_text_main kda_text live_stats_button" ><i class="fa fa-exclamation fa-2x" aria-hidden="true" style="  padding-top: -15px !important;"></i></a> -->
+  <div class="content_main" id="content">
+
+  <div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<md-dialog aria-label="Filters" ng-cloak style="width:30%;" class="dialog">
+
+
+        <md-dialog-content>
+
+          <ul class="legend">
+          <div ng-repeat="data in operetor_data track by $index">
+
+
+            <li style="color:{{data.color}}"><span style="color:black">{{data.operetor}}({{data.percent}}%)</span></li>
+            <!-- <li style="color:#5DAEF8"><span style="color:black">BONBON</span></li>
+            <li style="color:#F8FF6E"><span style="color:black">EVO TV</span></li>
+            <li style="color:#6EFF8B"><span style="color:black">H1 TELEKOM</span></li>
+            <li style="color:#FFBDFE"><span style="color:black">ISKON</span></li> -->
+          </div>
+          </ul>
+
+          <canvas id="doughnut" class="chart chart-doughnut chart-stats"
+            chart-data="data" chart-labels="labels" chart-colours="colours" >
+          </canvas>
+          <button class="export dialog_export" ng-click="goToExport()">
+             Export
+          </button>
+          <button class="export close_dialog" ng-click="closeDialog()">
+             Close
+          </button>
+        </md-dialog-content>
+
+
+
+</md-dialog>

@@ -1,0 +1,22 @@
+
+<div class="login_background">
+<div class="login">
+  <header class="login-header"><span class="text">sign <span class="in">IN</span></span><span class="loader"></span></header>
+  <form class="login-form" autocomplete="off">
+    <input type="text" value="" placeholder="Username" ng-model="signin.username" class="login-input" required/>
+    <input type="password" value="" placeholder="Password" ng-model="signin.password" class="login-input" required/>
+    <button ng-click="login()" class="login-btn">login</button>
+  </form>
+</div>
+<div class="signup signup">
+  <header class="signup-header"><span class="text">sign <span class="up">UP</span></span><span class="loader"></span></header>
+  <form class="login-form" autocomplete="off">
+    <input type="text" value="" placeholder="Username" ng-model="signup.username" class="login-input" required/>
+
+    <input type="password" value="" placeholder="Password" ng-model="signup.password" class="login-input" required/>
+
+      <input type="text" value="" placeholder="summonername" ng-model="signup.summonername" class="login-input" required/>
+      <button ng-click="signup()" class="login-btn">login</button>
+  </form>
+</div>
+</div>

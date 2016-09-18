@@ -1,0 +1,84 @@
+
+
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+<div class="no_game" ng-if='votes_submited==true' style="left: 23%;">
+Thank you for making league community a better place.
+</div>
+<div class="vote_banner remove"  style="left: 38%;">
+You have <span style="color:rgb(255,64,129);">4</span> new messages!
+</div>
+<div class="" id="match" style="margin-top:2%;">
+
+ 
+<table>
+  
+  <tr>
+    <td>
+      <button ng-click="prev()" id="submit_votes" type="button" class="prev" ><i style="padding-left:2px;padding-right:6px" class="fa fa-arrow-left fa-4x" aria-hidden="true"></i></button>
+    </td>
+
+<td>
+      <div class="  message_main message_vote" id="message_vote" style="margin-top:10%;">
+<table class="message" id="message">
+  <tr>
+    <td>
+      <p>
+                You got a message from: {{votes.from}}
+      </p>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p ng-click="view()" style="font-size:30px;font-weight:bold;">
+                View it
+      </p>
+    </td>
+  </tr>
+
+</table>
+<div class="">
+  <table class="stats kda" style="margin:15px;" id="view">
+    <tr>
+
+      <td>
+        <img style="width:50px; height:50px;" src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/profileicon/{{votes.profile_icon}}.png" class="img_card_main_match"></img>
+      </td>
+
+
+
+      <td>
+         {{votes.data}}
+      </td>
+      <td>
+        <button ng-click="vote_data(votes._id)" id="{{votes._id}}" type="button" class="ok_button"><i class="fa fa-check fa-1x" aria-hidden="true"></i></button>
+      </td>
+      <td>
+         
+      </td>
+    </tr>
+  </table>
+</div>
+
+    </td>
+    <td>
+      <button ng-click="next()" id="submit_votes" type="button" class="next" ><i class="fa fa-arrow-right fa-4x" style="padding-left:6px;padding-right:2px"   aria-hidden="true"></i></button>
+    </td>
+  </tr>
+</table>
+
+
+
+
+</div>
+<div class="pagi remove">
+       <p id="0"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+       <p id="1"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+       <p id="2"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+       <p id="3"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+
+</div>
+ 
+
+
+    <button ng-click="submitVotes()" id="submit_votes" type="button" class="submit_votes remove"><i class="fa fa-check fa-4x" aria-hidden="true"></i></button>

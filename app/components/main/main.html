@@ -1,0 +1,504 @@
+<div class="loader" ng-if='loading_data==true || loading_history==true'>
+  <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+   <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+    c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+    c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="1s"
+           from="0 50 50"
+           to="-360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+    L82,35.7z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+  </svg>
+</div>
+
+<div class="top_bar">
+    <div class="col-md-4 left">
+        Top Played
+    </div>
+    <div class="col-md-4">
+        History
+    </div>
+    <div class="col-md-4">
+        <div  ng-if='show_recent_history1==false'>
+          Match Stats  <button  style="margin-bottom: 5px;" ng-click="close_match()" class="kda_text  "><i class="fa fa-times effect-2 sub-a" aria-hidden="true"></i></button>
+
+        </div>
+        <div  ng-if='show_recent_history1==true'>
+            Recent stats
+        </div>
+
+    </div>
+</div>
+<div class="right_sidebar_main">
+<div class="champions">
+  <div class="   " ng-repeat="champion in champion_list | limitTo:3" ng-if='loading_data==false'>
+
+    <div class="col-md-7">
+
+        <table class="champion_table">
+          <tr class="main_data">
+            <td>
+
+            <div class="col-md-4">
+
+              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champion.name}}.png" class="img_card_main_left"></img>
+
+        </div>
+          <div class="col-md-6">
+            <table class="kda_side">
+              <tr>
+                <td><p class="kda_text">{{champion.winrate | limitTo:4}}</p></td>
+                <td><p class="kda_text">{{champion.games_played}}</p></td>
+                <td><button  style="margin-bottom: 5px;" ng-click="champ_detail(champion.name)" id="{{champion.name}}"class="kda_text  "><i class="fa fa-history effect-2 sub-a" aria-hidden="true"></i></button></td>
+
+              </tr>
+              <tr >
+
+
+
+              </tr>
+
+            </table>
+            <div style="color:rgb(255,64,129) ; font-weight:bold; padding-left:20px;">{{champion.name}}</div>
+          </div>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+
+
+        </tr>
+        <tr id="{{champion.name}}_tr" style="height:21px;" class="kda_side">
+          <td>
+            <table>
+              <tr>
+                <td>
+                    <div id="{{champion.name}}_element" class="element_champ" style="width:1px;  display:inline;">
+                </td>
+                <td>
+                  <div class="hide_tr_div" id="{{champion.name}}_div">
+                    <table style="margin-left: 20px;margin-bottom: 10px;">
+                      <tr>
+                        <td>
+                            <p class="col-md-4 kda_text_more kda_text">{{champion.kills_per_game}}</p>
+                        </td>
+                        <td>
+                          <p class="col-md-4 kda_text_more kda_text">{{champion.deaths_per_game }}</p>
+                        </td>
+                        <td>
+                          <p class="col-md-4 kda_text_more kda_text">{{champion.assists_per_game }}</p>
+                        </td>
+
+                      </tr>
+                      <tr style="color:white; font-weight:bold; margin-bottom:5px;">
+
+
+
+                      </tr>
+                    </table>
+
+
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+
+            </div>
+
+          </td>
+
+
+        </tr>
+          <!-- <tr><td colspan="3" id="hide_data"><p></p>
+          </td></tr> -->
+
+      </table>
+
+          </div>
+
+      </div>
+</div>
+
+</div>
+
+
+
+<div class="" style="margin-top:80px;">
+
+
+<div id="history" class="row   board_row" ng-repeat="history in history | limitTo:4"  ng-if='loading_history==false'>
+      <div class="col-md-4">
+            </div>
+  <div class="col-md-7">
+
+      <table class="data_table">
+        <tr class="main_data">
+          <td>
+
+          <!-- <div class="main_line_lost" ng-if='history.win==true'>
+          </div>
+          <div class="main_line_win" ng-if='history.win==false'>
+          </div> -->
+          <div class="col-md-6">
+
+            <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{history.champion}}.png" class="img_card_main"></img>
+      </div>
+        </td>
+        <td>
+          <table class="kda">
+            <tr>
+              <td><p class="">{{history.champion}}</p></td>
+            </tr>
+            <tr >
+              <td>
+                  <p class="kda_text1">
+                    KDA
+                  </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+        <td>
+          <table class="kda">
+            <tr>
+              <td>
+                <img ng-if='history.item_0!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{history.item_0}}.png" class="item_image" />
+                <img ng-if='history.item_0==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+                <img ng-if='history.item_1!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{history.item_1}}.png" class="item_image" />
+                <img ng-if='history.item_1==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+
+                <img ng-if='history.item_2!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{history.item_2}}.png" class="item_image" />
+                <img ng-if='history.item_2==0' src="static/blank_item.png" class="item_image" />
+              </td>
+            </tr>
+            <tr >
+
+              <td>
+                <img ng-if='history.item_3!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{history.item_3}}.png" class="item_image" />
+                <img ng-if='history.item_3==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+                <img ng-if='history.item_4!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{history.item_4}}.png" class="item_image" />
+                <img ng-if='history.item_4==0' src="static/blank_item.png" class="item_image" />
+              </td>
+              <td>
+                <img ng-if='history.item_5!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{history.item_5}}.png" class="item_image" />
+                <img ng-if='history.item_5==0' src="static/blank_item.png" class="item_image" />
+              </td>
+
+            </tr>
+
+          </table>
+        </td>
+        <td>
+          <table class="kda">
+            <tr>
+              <td><p class="kda_text" style="color:white !important">{{history.kills}}</p></td>
+              <td><p class="kda_text" style="color:white !important">{{history.assists}}</p></td>
+              <td><p class="kda_text" style="color:white !important">{{history.deaths}}</p></td>
+            </tr>
+            <tr >
+              <td>
+
+              </td>
+              <td>
+                  <p class="kda_text1">
+                    KDA
+                  </p>
+
+
+
+              </td>
+              <td>
+                <button  style="margin-bottom: 5px; height:35px; width:35px;" ng-click="getMatch(history.matchid)" id="{{history.matchid}}"class="kda_text  "><i class="fa fa-arrow-right effect-2 sub-a" aria-hidden="true"></i></button>
+
+              </td>
+
+            </tr>
+
+          </table>
+        </td>
+
+
+      </tr>
+        <!-- <tr><td colspan="3" id="hide_data"><p>Blah </p>
+        </td></tr> -->
+
+    </table>
+
+        </div>
+
+    </div>
+    </div>
+    <div class="pagination" ng-if="loading_data==false">
+      <div class="col-md-4" style="height: 50px !important; "><button ng-click="decrease_pagination()" class="kda_text_main kda_text" style="padding-top:0px !important;"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></div>
+    <div class="col-md-4" style="height: 50px !important;"><button class="kda_text_main kda_text" style="padding-top:0px !important;">{{pagination_number}}</button></div>
+    <div class="col-md-4  " style="height: 50px !important;"><button ng-click="increase_pagination()" class="kda_text_main kda_text" style="padding-top:0px !important;"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></div></td>
+    </div>
+
+    <div class="left_sidebar_main_history" ng-if='show_recent_history1==true && loading_recent_history1==false'>
+
+      <table class="recent_history kda">
+        <tr>
+          <td>
+            Most Played Champion
+          </td>
+          <td>
+            <img style="width:70px; height:70px;" src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{recent_history.most_played}}.png" class="img_card_main_match"></img>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Most Played Item
+          </td>
+          <td>
+            <img style="width:70px; height:70px;"  src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{recent_history.most_played_item}}.png" class="img_card_main_match"></img>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Winrate
+          </td>
+          <td>
+            <p class="kda_text">{{recent_history.recent_winrate | limitTo:4}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Kills
+          </td>
+          <td>
+            <p class="kda_text">{{recent_history.kills | limitTo:4}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Assists
+          </td>
+          <td>
+            <p class="kda_text">{{recent_history.deaths | limitTo:4}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Deaths
+          </td>
+          <td>
+            <p class="kda_text">{{recent_history.assists | limitTo:4}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            KDA
+          </td>
+
+          <td>
+            <p class="kda_text">{{recent_history.kills_per | limitTo:4}}</p>
+          </td>
+          <td>
+            <p class="kda_text">{{recent_history.kills_per | limitTo:4}}</p>
+          </td>
+          <td>
+            <p class="kda_text">{{recent_history.kills_per | limitTo:4}}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="left_sidebar_main" ng-if='show_recent_history1==false'>
+
+      <table>
+        <tr>
+          <td>
+            <div class="champions">
+
+              <div class="   " ng-repeat="champion in match_data | limitTo:5" ng-if='loading_data==false'>
+
+                <div class="col-md-7">
+
+                    <table class="champion_table">
+                      <tr class="main_data">
+                        <td>
+
+
+                      <div class="col-md-6">
+                        <table class="kda_side">
+                          <tr>
+                            <td>
+                              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champion.champion}}.png" class="img_card_main_match"></img>
+                            </td>
+                            <td><p class="kda_text">{{champion.kills | limitTo:4}}</p></td>
+                            <td><p class="kda_text">{{champion.deaths}}</p></td>
+                            <td><p class="kda_text">{{champion.assists}}</p></td>
+                            <td><button  style="margin-bottom: 5px;" ng-click="champ_detail_match(champion.champ_id)" id="{{champion.name}}"class="kda_text  "><i class="fa fa-arrow-down effect-2 sub-a" aria-hidden="true"></i></button></td>
+
+                          </tr>
+                          <tr >
+
+                            <table class="kda" id="{{champion.champ_id}}_tr">
+                              <td>
+                                <div id="{{champion.champ_id}}_element" style="height:1px;">
+
+                                </div>
+                              </td>
+
+                                <td class="{{champion.champ_id}}_div hide_match_rw">
+                                  <img ng-if='history.item_0!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_0}}.png" class="item_image" />
+                                  <img ng-if='history.item_0==0' src="static/blank_item.png" class="item_image" />
+
+                                  <img ng-if='history.item_1!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_1}}.png" class="item_image" />
+                                  <img ng-if='history.item_1==0' src="static/blank_item.png" class="item_image" />
+                                </td>
+                                <td class="{{champion.champ_id}}_div hide_match_rw">
+
+                                  <img ng-if='history.item_2!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_2}}.png" class="item_image" />
+                                  <img ng-if='history.item_2==0' src="static/blank_item.png" class="item_image" />
+
+                                  <img ng-if='history.item_3!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_3}}.png" class="item_image" />
+                                  <img ng-if='history.item_3==0' src="static/blank_item.png" class="item_image" />
+                                </td>
+                                <td class="{{champion.champ_id}}_div hide_match_rw">
+                                  <img ng-if='history.item_4!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_4}}.png" class="item_image" />
+                                  <img ng-if='history.item_4==0' src="static/blank_item.png" class="item_image" />
+
+                                  <img ng-if='history.item_5!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_5}}.png" class="item_image" />
+                                  <img ng-if='history.item_5==0' src="static/blank_item.png" class="item_image" />
+                                </td>
+
+
+
+                            </table>
+
+
+                          </tr>
+
+
+                        <!-- <div style="color:rgb(255,64,129) ; font-weight:bold; padding-left:20px;">{{champion.name}}</div> -->
+                      </div>
+
+
+
+
+                  </table>
+                      </div>
+
+                  </div>
+                </div>
+
+          </td>
+          <td>
+            <div class="champions">
+              <div class="   " ng-repeat="champion in match_data | limitTo:5:5" ng-if='loading_data==false'>
+
+                <div class="col-md-7">
+
+                    <table class="champion_table">
+                      <tr class="main_data">
+                        <td>
+
+
+                      <div class="col-md-6">
+                        <table class="kda_side">
+                          <tr>
+                            <td>
+                              <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champion.champion}}.png" class="img_card_main_match"></img>
+                            </td>
+                            <td><p class="kda_text">{{champion.kills | limitTo:4}}</p></td>
+                            <td><p class="kda_text">{{champion.deaths}}</p></td>
+                            <td><p class="kda_text">{{champion.assists}}</p></td>
+                            <td><button  style="margin-bottom: 5px;" ng-click="champ_detail_match(champion.champ_id)" id="{{champion.name}}"class="kda_text  "><i class="fa fa-arrow-down effect-2 sub-a" aria-hidden="true"></i></button></td>
+
+                          </tr>
+                          <tr id="{{champion.champ_id}}_tr" >
+                            <td>
+                              <div id="{{champion.champ_id}}_element" style="height:1px;">
+
+                              </div>
+                            </td>
+
+
+
+                                  <td class="{{champion.champ_id}}_div hide_match_rw">
+                                    <img ng-if='history.item_0!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_0}}.png" class="item_image" />
+                                    <img ng-if='history.item_0==0' src="static/blank_item.png" class="item_image" />
+
+                                    <img ng-if='history.item_1!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_1}}.png" class="item_image" />
+                                    <img ng-if='history.item_1==0' src="static/blank_item.png" class="item_image" />
+                                  </td>
+                                  <td class="{{champion.champ_id}}_div hide_match_rw">
+
+                                    <img ng-if='history.item_2!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_2}}.png" class="item_image" />
+                                    <img ng-if='history.item_2==0' src="static/blank_item.png" class="item_image" />
+
+                                    <img ng-if='history.item_3!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_3}}.png" class="item_image" />
+                                    <img ng-if='history.item_3==0' src="static/blank_item.png" class="item_image" />
+                                  </td>
+                                  <td class="{{champion.champ_id}}_div hide_match_rw">
+                                    <img ng-if='history.item_4!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_4}}.png" class="item_image" />
+                                    <img ng-if='history.item_4==0' src="static/blank_item.png" class="item_image" />
+
+                                    <img ng-if='history.item_5!=0' src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/{{champion.item_5}}.png" class="item_image" />
+                                    <img ng-if='history.item_5==0' src="static/blank_item.png" class="item_image" />
+                                  </td>
+
+
+
+
+                            </td>
+
+
+
+
+                          </tr>
+
+
+                        <!-- <div style="color:rgb(255,64,129) ; font-weight:bold; padding-left:20px;">{{champion.name}}</div> -->
+                      </div>
+
+
+
+
+                  </table>
+                      </div>
+
+                  </div>
+                </div>
+
+          </td>
+        </tr>
+      </table>
+</div>
