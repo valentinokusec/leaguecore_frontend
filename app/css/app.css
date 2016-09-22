@@ -5,6 +5,36 @@ body
   margin: 0;
   font-family: 'Baloo Tamma', cursive ;
 }
+.headlines
+{
+  padding-top: 50px;
+  color: #374d5a !important;
+  font-weight: bolder;
+  font-size: 20px;
+}
+@keyframes move {
+  from { bottom: 0; }
+  to   { bottom: 70%; }
+}
+@keyframes move2 {
+  from { bottom:  0%; }
+  to   { bottom: 30%; }
+}
+.anim_resize {
+
+  -webkit-animation: animLoadedContent 1s cubic-bezier(0.7,0,0.3,1) both;
+  animation: animLoadedContent 1s cubic-bezier(0.7,0,0.3,1) both;
+}
+.anim {
+
+    animation-name: move;
+    animation-duration: 1s;
+}
+.anim2 {
+
+    animation-name: move2;
+    animation-duration: 1s;
+}
 .ip-logo
 {
 position: absolute;
@@ -30,6 +60,17 @@ font-weight: bold;
   -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
+}
+.ele
+{
+position: absolute !important;
+bottom: 70% !important;
+left: 45% !important;
+color: #374d5a;
+font-size: 40px;
+font-weight: bold;
+width: 300px !important;
+opacity: 1 !important;
 }
 .main_input
 {
@@ -164,9 +205,9 @@ border: 0px solid #000000;
     background-color:white;
     left: 40%;
     top: 40%;
-    border-radius: 32px 32px 32px 32px;
+    border-radius: 31px 31px 31px 31px;
 -moz-border-radius: 31px 31px 31px 31px;
--webkit-border-radius: 34px 34px 34px 34px;
+-webkit-border-radius: 31px 31px 31px 31px;
 border: 0px solid #000000;
 -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -174,6 +215,57 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     z-index: 1010;
 
 }
+.dialog_main h2
+  {
+    color: white;
+    padding-left: 20px;
+  }
+  .dialog_main h3
+    {
+      color: #374d5a;
+      position: absolute;
+    top: 40%;
+    left:8%;
+    }
+  .dialog_main button
+    {
+      position: absolute;
+    bottom: 10px;
+    left:40%;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    background-color: white;
+    color: #ff4081;
+    font-weight: bold;
+    }
+    .dialog_main img
+      {
+        position: absolute;
+      top: 20%;
+      left:23%;
+
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+
+      }
+.dialog_main
+  {
+    top: 20%;
+    height:400px;
+  }
+
+  .dialog_submit
+    { width: 800px;
+      top: 20%;
+      left:26%;
+      height:500px;
+    }
+
   .message_main_votes
   {
     width: 300px !important;
@@ -1571,7 +1663,7 @@ color: white;
 }
 .screenshot
 {
-  width: 500px;
+  width: 600px;
   height: 300px;
   border-radius: 10px 10px 10px 10px;
 -moz-border-radius: 10px 10px 10px 10px;
@@ -1762,6 +1854,7 @@ border: 0px solid #000000;
     overflow: hidden;
     outline:none;
 }
+
 .ok_button
 {
   padding-top: 5px;
@@ -1782,8 +1875,14 @@ border: 0px solid #000000;
 .pagi
 {
   position:absolute;
-  bottom: 26%;
-  left: 48% ;
+  bottom: 36%;
+  left: 47% ;
+}
+.pagi_index
+{
+  position:absolute;
+  bottom: 46%;
+  right: 5% ;
 }
 .active
 {

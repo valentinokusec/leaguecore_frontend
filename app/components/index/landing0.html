@@ -48,11 +48,11 @@
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
             <span class="input input--yoshiko">
-    					<input class="input__field input__field--yoshiko main_input" type="text"  id="sample3" />
-    					<label class="input__label input__label--yoshiko" for="sample3">
-    						<span class="input__label-content input__label-content--yoshiko" data-content="summoner name">summoner name</span>
-    					</label>
-    				</span>
+              <input class="input__field input__field--yoshiko main_input" type="text"  id="sample3" />
+              <label class="input__label input__label--yoshiko" for="sample3">
+                <span class="input__label-content input__label-content--yoshiko" data-content="summoner name">summoner name</span>
+              </label>
+            </span>
           </div>
           <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--mini-fab" style="margin-top: 50px;" ng-click="myFunction()">
                      <i class="material-icons">add</i>
@@ -80,19 +80,94 @@
                   </div>
         </form>
         <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-          <div class="mdl-snackbar__text"></div>
+          <div class="mdl-snackbar__text"></div>  
           <button class="mdl-snackbar__action" type="button"></button>
         </div>
         <button  ng-click="toggle()" class="kda_text_main kda_text trigger" style="padding-top:0px !important;"><i class="fa fa-th-large" aria-hidden="true"></i></button>
 
     </div>
       <div class="" id="container">
-    <header class="intro">
+    <header class="intro"> 
 
-  <h1>sdas</h1>
+       <section class="more_details" id="feature">
 
+      <div class="content1"  ng-if='pagi1==0'>
+        <div class="row content_index_row">
+          <div class="col-md-1">
+        
+          </div>
+          <div class="col-md-5">
+              <img class="screenshot" src="static/leadboard.png" alt="" />
+          </div>
+          <div class="col-md-4 headlines" >
+            View the most <span style="color:rgb(255,64,129);">popular</span> players. You can try be the <span style="color:rgb(255,64,129);">number one</span>  yourself and get <span style="color:rgb(255,64,129);">rewards!</span>
+          </div>
 
+          </div>
 
+    
+      </div>
+           <div class="content1"  ng-if='pagi1==1'>
+        <div class="row content_index_row">
+          <div class="col-md-1">
+        
+          </div>
+          <div class="col-md-5">
+              <img class="screenshot" src="static/match.png" alt="" />
+          </div>
+           <div class="col-md-4 headlines" >
+           Vote for the players that were really <span style="color:rgb(255,64,129);">nice</span> to you or <span style="color:rgb(255,64,129);">carried</span> you, so that their <span style="color:rgb(255,64,129);">good attitude</span> gets <span style="color:rgb(255,64,129);">rewarded</span>. You can even write a <span style="color:rgb(255,64,129);">message</span> to let them know that their good behaviour gets <span style="color:rgb(255,64,129);">appreciated!</span>
+          </div>
+
+          </div>
+
+    
+      </div>
+           <div class="content1"  ng-if='pagi1==2'>
+        <div class="row content_index_row">
+          <div class="col-md-1">
+        
+          </div>
+          <div class="col-md-5">
+              <img class="screenshot" src="static/live.png" alt="" />
+          </div>
+          <div class="col-md-4 headlines" >
+           View the most <span style="color:rgb(255,64,129);">important stats</span> in your live game! </br>
+           Find out which lane is the <span style="color:rgb(255,64,129);">most critical</span>, what player will have the <span style="color:rgb(255,64,129);">most impact</span>, who is <span style="color:rgb(255,64,129);">smurfing</span> or <span style="color:rgb(255,64,129);">scripting</span>. If they are any <span style="color:rgb(255,64,129);">premades</span>,  <span style="color:rgb(255,64,129);">OTP's</span> or is someone just trying a new champ and <span style="color:rgb(255,64,129);">much more...</span>
+          </div>
+
+          </div>
+
+    
+      </div>
+      
+    </section>
+  
+      
+
+    <div class="pagi_index">
+    <table>
+      <tr>
+        <td>
+          <p id="0"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+        </td>
+      </tr>
+       <tr>
+        <td>
+          <p id="1"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+        </td>
+      </tr>
+       <tr>
+        <td>
+          <p id="2"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+        </td>
+      </tr>
+     
+    </table>
+       
+       
+
+</div>
 
 
     </header><!-- /intro -->

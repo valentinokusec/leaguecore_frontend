@@ -1,10 +1,73 @@
 
 
 var landingControllers = angular.module('landingControllers', []);
-landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$rootScope','$cookies' ,'$rootScope',
-  function($scope,$location, $http,$rootScope,$cookies,$rootScope) {
+landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$rootScope','$cookies' ,
+  function($scope,$location, $http,$rootScope,$cookies) {
 
 
+var scroll_con=0;
+$scope.pagi1=0;
+$("#"+$scope.pagi1).addClass("active");
+$(window).bind('mousewheel DOMMouseScroll', function(event){
+  
+    if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+        if (scroll_con==0) {
+          
+            $(".content1").animate({"margin-top": '-=20%',"opacity":"0"});
+              scroll_con=1;
+              setTimeout(function()
+                { 
+                    
+                     $("#"+$scope.pagi1).removeClass("active");
+                     if (0== $scope.pagi1) {
+
+                     $scope.pagi1=2;
+                     }
+                      else
+                      {
+                        $scope.pagi1--;
+                      }
+                      $("#"+$scope.pagi1).addClass("active");
+                      $scope.$apply();
+                   console.log($scope.pagi1);
+                    $(".content1").css({"margin-top": "30%","opacity":"1"});
+                 
+                    $(".content1").animate({"margin-top": '-=20%'});
+                     scroll_con=0;
+
+                },501);
+        }
+    }
+    else {
+               if (scroll_con==0) {
+          
+            $(".content1").animate({"margin-top": '+=20%',"opacity":"0"});
+              scroll_con=1;
+              setTimeout(function()
+                { 
+                    
+                     $("#"+$scope.pagi1).removeClass("active");
+                     if (2== $scope.pagi1) {
+
+                     $scope.pagi1=0;
+                     }
+                      else
+                      {
+                        $scope.pagi1++;
+                      }
+                      $("#"+$scope.pagi1).addClass("active");
+                      $scope.$apply();
+                   console.log($scope.pagi1);
+                    $(".content1").css({"margin-top": "10%","opacity":"1"});
+                 
+                    $(".content1").animate({"margin-top": '+=2%'});
+                     scroll_con=0;
+
+                },501);
+        }
+    }
+  
+});
 
     var support = { animations : Modernizr.cssanimations },
       container = document.getElementById( 'ip-container' ),
@@ -56,9 +119,7 @@ landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$ro
       loader.setProgressFn( simulationFn );
     }
 
-    function noscroll() {
-      window.scrollTo( 0, 0 );
-    }
+
       $(".trigger").hide();
     setTimeout(function()
     {
@@ -78,7 +139,7 @@ landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$ro
       }
       console.log("dsad");
       classie.add( document.body, 'layout-switch' );
-      window.removeEventListener( 'scroll', noscroll );
+     
     };
 
     if( support.animations ) {
@@ -93,9 +154,16 @@ landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$ro
     var container = document.getElementById( 'container' );
 
 		var	trigger = container.querySelector( 'button.trigger' );
-    		window.addEventListener( 'scroll', noscroll );
+    		
 		$scope.toggle=function() {
+          $(".content1").css({"margin-top": "20%","opacity":"0"});
+         
+             setTimeout(function()
+                { 
+                    
+                  $(".content1").animate({"margin-top": '-=10%',"opacity":"1"});
 
+                },501);
         if (  $("#container").attr('class')!="container--open") {
           console.log(container);
 
@@ -105,7 +173,7 @@ landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$ro
            $(".input_index").addClass("input_line_move");
            $(".toggle_main_line").addClass("match_line_move");
            $(".toggle_main").addClass("logo_line_move");
-				window.addEventListener( 'scroll', noscroll );
+				
         }
         else {
           $("#container").removeClass("container--open");
@@ -124,15 +192,10 @@ landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$ro
 
 		}
 
-		function noscroll() {
-			window.scrollTo( 0, 0 );
-		}
+
 
 		// reset scrolling position
-		document.body.scrollTop = document.documentElement.scrollTop = 0;
 
-		// disable scrolling
-		window.addEventListener( 'scroll', noscroll );
 
 
     var movementStrength = 25;

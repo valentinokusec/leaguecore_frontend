@@ -1,5 +1,54 @@
+<div id="somedialog" class="dialog_main dialog_submit">
+  <div class="line_dialog">
+  <h2><strong>Welcome</strong> Summoner</h2>
+  </div>
+  <img src="static/heart_screen.png" alt="" class="img_text"/>
+  <h3 class="h2_text"><strong>This is the place where you validate your messages. That means every message you don't want to keep you can simply ignore and it will pernamently deleted. This system exist to protect players from harmfull messages.To view a message simple click on View message button but be advice that it may be harmful. If you like the message you can click on the checkbox. After you are done reweing your messages clic on the button on bottom to keep the changes.</h3>
+  <div><button ng-click="closeDialog()"class="action" data-dialog-close>KK</button></div>
+  </div>
+<h1 class=" ele">
+  Please wait
+</h1>
+<div class="loader">
 
-
+  <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+   <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
+    c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7
+    c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="1s"
+           from="0 50 50"
+           to="-360 50 50"
+           repeatCount="indefinite" />
+    </path>
+   <path fill="#ff4081" d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5
+    L82,35.7z">
+        <animateTransform
+           attributeName="transform"
+           attributeType="XML"
+           type="rotate"
+           dur="2s"
+           from="0 50 50"
+           to="360 50 50"
+           repeatCount="indefinite" />
+    </path>
+  </svg>
+</div>
+<div class="animate_el">
 <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 <div class="no_game" ng-if='votes_submited==true' style="left: 23%;">
 Thank you for making league community a better place.
@@ -9,9 +58,9 @@ You have <span style="color:rgb(255,64,129);">4</span> new messages!
 </div>
 <div class="" id="match" style="margin-top:2%;">
 
- 
+
 <table>
-  
+
   <tr>
     <td>
       <button ng-click="prev()" id="submit_votes" type="button" class="prev" ><i style="padding-left:2px;padding-right:6px" class="fa fa-arrow-left fa-4x" aria-hidden="true"></i></button>
@@ -54,7 +103,7 @@ You have <span style="color:rgb(255,64,129);">4</span> new messages!
         <button ng-click="vote_data(votes._id)" id="{{votes._id}}" type="button" class="ok_button"><i class="fa fa-check fa-1x" aria-hidden="true"></i></button>
       </td>
       <td>
-         
+
       </td>
     </tr>
   </table>
@@ -78,7 +127,9 @@ You have <span style="color:rgb(255,64,129);">4</span> new messages!
        <p id="3"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
 
 </div>
- 
+
+
 
 
     <button ng-click="submitVotes()" id="submit_votes" type="button" class="submit_votes remove"><i class="fa fa-check fa-4x" aria-hidden="true"></i></button>
+    </div>

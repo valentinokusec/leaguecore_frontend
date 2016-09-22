@@ -1,5 +1,18 @@
 
-<div class="loader" ng-if='loading_data==true'>
+<div id="somedialog" class="dialog_main dialog_match">
+  <div class="line_dialog">
+  <h2><strong>Welcome</strong> Summoner</h2>
+  </div>
+  <img src="static/heart_screen.png" alt="" class="img_text"/>
+  <h3 class="h2_text"><strong>If one of the summoner was extra nice support him by clicking on the heart</h3>
+  <div><button ng-click="closeDialog()"class="action" data-dialog-close>KK</button></div>
+  </div>
+
+<h1 class=" ele">
+  Please wait
+</h1>
+<div class="loader">
+
   <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
    <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
@@ -41,6 +54,9 @@
 <div class="no_game" ng-if='votes_submited==true' style="left: 23%;">
 Thank you for making league community a better place.
 </div>
+<div class="animate_el">
+
+
 <div class="match" id="match" style="margin-top:2%;">
 <table>
 <tr>
@@ -53,7 +69,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_1.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_1">
             <tr>
               <td>
@@ -100,7 +116,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_2.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_2">
             <tr>
               <td>
@@ -146,7 +162,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_3.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_3">
             <tr>
               <td>
@@ -194,7 +210,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_4.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_4">
             <tr>
               <td>
@@ -240,7 +256,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_5.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_5">
             <tr>
               <td>
@@ -288,7 +304,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_6.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_6">
             <tr>
               <td>
@@ -335,7 +351,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_7.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_7">
             <tr>
               <td>
@@ -382,7 +398,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_8.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_8">
             <tr>
               <td>
@@ -429,7 +445,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_9.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_79">
             <tr>
               <td>
@@ -476,7 +492,7 @@ Thank you for making league community a better place.
               <img src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{champ_10.champ}}.png" class="img_card_match"></img>
 
             </div>
-          
+
           <table class="stats_match kda" style="margin-top:10px;" id="stats_match_7">
             <tr>
               <td>
@@ -518,5 +534,5 @@ Thank you for making league community a better place.
 </table>
     </div>
 
-
+</div>
     <button ng-click="submitVotes()" id="submit_votes" type="button" class="submit_votes"><i class="fa fa-check fa-4x" aria-hidden="true"></i></button>

@@ -4,6 +4,17 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
   function($scope,$routeParams,$location, $http,$rootScope,$cookies,GetVotesForSubmit,SumitVotes) {
 
 
+    var first_time = $cookies.get('first_time');
+
+    $(".dialog_submit").hide();
+    $(".loader").hide();
+    $(".dialog_match").hide();
+    $(".ele").addClass("anim");
+    setTimeout(
+          function()
+          {
+            $(".loader").fadeIn();
+          }, 1000);
 
     $scope.pagination=0;
     $scope.summoner=$routeParams.summoner;
@@ -20,7 +31,7 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
     $scope.view=function(){
 
       $("#view").slideToggle("fast");
-  
+
 
     }
     $scope.next=function(){
@@ -37,11 +48,11 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
       console.log( $scope.pagination);
        $("#"+$scope.pagination).addClass("active");
       $("#message_vote").animate({"margin-left": '+=20%',"opacity":"0"});
-      
+
        setTimeout(function()
                 {
                     $("#message_vote").css({"margin-left": "30%","opacity":"1"});
-                 
+
                     $("#message_vote").animate({"margin-left": '+=12%'});
 
                 },501);
@@ -61,7 +72,7 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
       console.log( $scope.pagination);
        $("#"+$scope.pagination).addClass("active");
           $("#message_vote").animate({"margin-left": '-=20%',"opacity":"0"});
-   
+
        setTimeout(function()
                 {
                   $("#message_vote").css({"margin-left": "55%","opacity":"1"})
@@ -70,8 +81,8 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
 
                 },801);
 
-    
-  
+
+
 
     }
     $scope.submitVotes=function()
@@ -90,12 +101,12 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
             });
       }
     $scope.vote_data=function(target)
-      {  
+      {
        $("#"+target).animate({"opacity":"0"});
        $("#"+target).css("background-color","#374d5a");
        $("#"+$scope.pagination).addClass("activate");
         setTimeout(function()
-                {    
+                {
                    $("#"+target).animate({"opacity":"1"});
                    $("#"+target).attr('disabled', 'disabled');
                    $("#"+target).fadeIn("50");
@@ -105,11 +116,19 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
             $scope.id_data.data.push(target);
       }
       $scope.last_table;
-    
-    $scope.votes;
-    var json_data={name:$scope.summoner};
-    GetVotesForSubmit.query(json_data,function(data) {
 
+    $scope.votes;
+
+      $(".animate_el").css('opacity',"0");
+    var json_data={name:$scope.summoner};
+    setTimeout(
+          function()
+          {
+    GetVotesForSubmit.query(json_data,function(data) {
+        $(".animate_el").animate({'opacity':"1"});
+        $(".animate_el").animate({'bottom':"100px"});
+        $('.ele').hide();
+        $('.loader').hide();
         $('#p2').css("visibility","hidden");
         $("#0").addClass("active");
         $scope.loading_data=false;
@@ -123,6 +142,26 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
               console.log(left);
               $('.pagi').css('left',left);
             }
+            setTimeout(
+                  function()
+                  {
 
-    });
+            if (first_time==null) {
+                  console.log(first_time);
+                  {
+
+                    $(".overlay_black").fadeIn();
+                    $(".dialog_submit").show();
+
+                    $(".dialog_submit").addClass("anim_resize");
+                  }
+            }
+              }, 1000);
+    });},1000);
+    $scope.closeDialog=function()
+      {
+        $(".overlay_black").fadeOut();
+        $(".dialog_submit").fadeOut();
+          $(".dialog_submit").removeClass("anim_resize");
+      }
     }]);
