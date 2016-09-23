@@ -379,7 +379,7 @@ filter: blur(5px);
 }
 .main-panel
 {
-  display: none;
+  /*display: none;*/
 }
 .toggle_live_buttons
 {
@@ -951,7 +951,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   position: absolute;
   left: 5%;
   top: 2%;
-  
+
 }
 .right_stats td
 { color: #374d5a !important;
@@ -972,7 +972,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   text-align: center;
   padding-top: 7px !important;
   font-size: 25px;
-    
+
   font-family: 'Baloo Tamma', cursive;
 }
 .kdd
@@ -983,7 +983,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   color: rgb(255,64,129);
   text-align: center;
   padding-top: 7px !important;
-  
+
   font-size: 19px;
   opacity: 0.8;
 }
@@ -1974,7 +1974,7 @@ border: 0px solid #000000;
 {
   width: 70px;
   height: 70px;
-  margin-left: 20px;
+  margin: auto;
 }
 .img_card_match
 {

@@ -57,22 +57,22 @@ No active game found!
 
     <tr class="role">
       <td >
-      TOP   
+      TOP
       </td>
       <td >
-        MID   
+        MID
       </td>
 
 <td >
-  BOTTOM   
+  BOTTOM
       </td>
 
 <td >
-  SUPPORT   
+  SUPPORT
       </td>
 
 <td >
-JUNGLE     
+JUNGLE
       </td>
 
 
@@ -90,7 +90,7 @@ JUNGLE
 
           <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 
-          <table  class="champ-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1:1">
+          <table  class="main-panel is-active" ng-repeat="general_stats in champion.general_stats | limitTo:1">
 
             <tr>
               <td>
@@ -127,12 +127,13 @@ JUNGLE
               </td>
             </tr>
           </table>
-          <table  class="main-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1">
+          <!-- <table  class="champ-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1:1">
+
             <tr>
               <td>
-                <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.kills_per_game}}</p>/</div>
-              <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.assists_per_game}}</p></div>
-              <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.deaths_per_game}}</p></div>
+              <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.kills_per_game}}<span class="kdd">/</span></p></div>
+              <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.assists_per_game}}<span class="kdd">/</span></p></div>
+              <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.deaths_per_game}}</p></div>
 
               </td>
 
@@ -140,19 +141,18 @@ JUNGLE
             </tr>
             <tr>
                 <td>
-              <p class="col-md-5" style="font-weight:bold; margin-top:10px;">
-                Winrate
+              <p class="col-md-5" style="font-weight:bold; margin-top:13px;  color: #374d5a;">
+                Winrate<span class="kdd">:</span>
               </p>
-              <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.winrate | limitTo:3}}</p></div>
+              <div class="col-md-5 " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.winrate | limitTo:3}}</p></div>
 
                 </td>
             </tr>
             <tr>
                 <td>
-                  <p class="col-md-5" style="font-weight:bold;" >
-                    Games played
-                  </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.games_played}}</p></div>
-
+                  <p class="col-md-5 kda_text_live1" style="font-weight:bold; color: #374d5a;" >
+                    Games played<span class="kdd">:</span>
+                  </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.games_played}}</p></div>
                 </td>
             </tr>
             <tr>
@@ -161,12 +161,10 @@ JUNGLE
                   <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
                   <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
                 </div>
-
-
-
               </td>
             </tr>
-          </table>
+          </table> -->
+
         </div>
 
         <table>
@@ -189,83 +187,81 @@ JUNGLE
 
             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 
-            <table  class="champ-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1:1">
+              <table  class="main-panel is-active" ng-repeat="general_stats in champion.general_stats | limitTo:1">
 
-              <tr>
-                <td>
-                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.kills_per_game}}</p></div>
-                <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.assists_per_game}}</p></div>
-                <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.deaths_per_game}}</p></div>
-
-                </td>
-
-
-              </tr>
-              <tr>
+                <tr>
                   <td>
-                <p class="col-md-5" style="font-weight:bold; margin-top:10px;">
-                  Winrate
-                </p>
-                <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.winrate | limitTo:3}}</p></div>
+                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.kills_per_game}}<span class="kdd">/</span></p></div>
+                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.assists_per_game}}<span class="kdd">/</span></p></div>
+                  <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.deaths_per_game}}</p></div>
 
                   </td>
-              </tr>
-              <tr>
+
+
+                </tr>
+                <tr>
+                    <td>
+                  <p class="col-md-5" style="font-weight:bold; margin-top:13px;  color: #374d5a;">
+                    Winrate<span class="kdd">:</span>
+                  </p>
+                  <div class="col-md-5 " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.winrate | limitTo:3}}</p></div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                      <p class="col-md-5 kda_text_live1" style="font-weight:bold; color: #374d5a;" >
+                        Games played<span class="kdd">:</span>
+                      </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.games_played}}</p></div>
+                    </td>
+                </tr>
+                <tr>
                   <td>
-                    <p class="col-md-5" style="font-weight:bold;" >
-                      Games played
-                    </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.games_played}}</p></div>
+                    <div class="" ng-repeat="history in champion.history | limitTo:5">
+                      <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
+                      <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
+                    </div>
                   </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="" ng-repeat="history in champion.history | limitTo:5">
-                    <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
-                    <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-            <table  class="main-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1">
-              <tr>
-                <td>
-                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.kills_per_game}}</p></div>
-                <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.assists_per_game}}</p></div>
-                <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.deaths_per_game}}</p></div>
+                </tr>
+              </table>
+              <!-- <table  class="champ-panel" ng-repeat="general_stats in champion.general_stats | limitTo:1:1">
 
-                </td>
-
-
-              </tr>
-              <tr>
+                <tr>
                   <td>
-                <p class="col-md-5" style="font-weight:bold; margin-top:10px;">
-                  Winrate
-                </p>
-                <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.winrate | limitTo:3}}</p></div>
-
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                    <p class="col-md-5" style="font-weight:bold;" >
-                      Games played
-                    </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live kda_text">{{general_stats.games_played}}</p></div>
+                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.kills_per_game}}<span class="kdd">/</span></p></div>
+                  <div class="col-md-3" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.assists_per_game}}<span class="kdd">/</span></p></div>
+                  <div class="col-md-3  " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.deaths_per_game}}</p></div>
 
                   </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="" ng-repeat="history in champion.history | limitTo:5">
-                    <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
-                    <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
-                  </div>
 
 
+                </tr>
+                <tr>
+                    <td>
+                  <p class="col-md-5" style="font-weight:bold; margin-top:13px;  color: #374d5a;">
+                    Winrate<span class="kdd">:</span>
+                  </p>
+                  <div class="col-md-5 " style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.winrate | limitTo:3}}</p></div>
 
-                </td>
-              </tr>
-            </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                      <p class="col-md-5 kda_text_live1" style="font-weight:bold; color: #374d5a;" >
+                        Games played<span class="kdd">:</span>
+                      </p>  <div class="col-md-5" style="height: 50px !important;"><p class="kda_text_live ">{{general_stats.games_played}}</p></div>
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="" ng-repeat="history in champion.history | limitTo:5">
+                      <div class="col-md-1" style="" ng-if="history.win==true"><p class="kda_text_live_wins kda_text live_win"></p></div>
+                      <div class="col-md-1" style="" ng-if="history.win==false"><p class="kda_text_live_wins kda_text"></p></div>
+                    </div>
+                  </td>
+                </tr>
+              </table> -->
+
           </div>
 
 

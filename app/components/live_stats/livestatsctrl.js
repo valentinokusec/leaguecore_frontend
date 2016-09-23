@@ -25,16 +25,16 @@ livestatsControllers.controller('LiveStatsCtrl', ['$scope','$routeParams','$loca
             // });
 
       });
-      $scope.toggle_live=function(target)
-        {
-          if (target=="main-panel") {
-              $(".champ-panel").hide();
-              $(".main-panel").show();
-          }
-          else {
-            $(".main-panel").hide();
-            $(".champ-panel").show();
-          }
-
-        }
+      // $scope.toggle_live=function(target)
+      //   {
+      //     if (target=="main-panel") {
+      //         $(".champ-panel").hide();
+      //         $(".main-panel").show();
+      //     }
+      //     else {
+      //       $(".main-panel").hide();
+      //       $(".champ-panel").show();
+      //     }
+      //
+      //   }
     }]);
