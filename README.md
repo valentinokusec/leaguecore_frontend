@@ -181,7 +181,7 @@ it whenever you like.
 ### Running the app during development
 
 - Run `npm start`
-- navigate your browser to `http://localhost:8000/app/index.html` to see the app running in your browser.
+- navigate your browser to `http://138.68.95.108:8000/app/index.html` to see the app running in your browser.
 
 ### Running unit tests
 

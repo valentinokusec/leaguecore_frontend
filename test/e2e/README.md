@@ -9,7 +9,7 @@ From the root folder of the repository run:
 npm start
 ```
 
-The application should now be available at `http://localhost:8000/app/index.html`
+The application should now be available at `http://138.68.95.108:8000/app/index.html`
 
 ## Testing with Protractor
 
