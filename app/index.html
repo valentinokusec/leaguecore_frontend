@@ -44,7 +44,8 @@
   <script src="components/match/matchservice.js"></script>
   <script src="components/votes/votesservice.js"></script>
 
-  <script src="/node_modules/angular-cookies/angular-cookies.js"></script>
+
+  <script src="node_modules/angular-cookies/angular-cookies.js"></script>
   <!-- google maps -->
 
 
@@ -130,7 +131,7 @@
                       </td>
                       <td>
                       <div id="profile_info" >
-                            <a href="" ng-click='auth()' class="profile_name">{{log}}</a>
+                            <span class="profile_name">{{profile_name}}</span>
 
 
 
@@ -282,7 +283,7 @@
 
 
                     <p style="font-size:30px;font-weight:bold;" class="col-md-9 quote">
-                      {{display}}
+                       {{message.data}}
                        </p>
 
 
@@ -292,24 +293,27 @@
 
 </table>
 <div class="">
-  <table class="stats " style="margin:15px;" id="stats_index">
+  <table class="stats kda" style="margin:15px;" id="stats_index">
     <tr>
 
-      <td style="width:50px; ">
+      <td>
         <img style="width:50px; height:50px;" src="http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/{{stats.champion}}.png" class="img_card_main_match"></img>
       </td>
 
 
 
       <td>
-      <p style="font-size:17px;font-weight:bold; color:#374d5a;" >
-                      {{message.data}}
-                       </p>
+        <p class="kda_text">{{stats.kills | limitTo:4}}</p>
       </td>
-      
-     <!--  <td>
+      <td>
+        <p class="kda_text">{{stats.deaths | limitTo:4}}</p>
+      </td>
+      <td>
+        <p class="kda_text">{{stats.assists | limitTo:4}}</p>
+      </td>
+      <td>
         <p ng-click="gameDetail()" class="kda_text" data-dialog="somedialog"><i class="fa fa-question" aria-hidden="true"></i></p>
-      </td> -->
+      </td>
     </tr>
   </table>
 </div>
@@ -322,12 +326,12 @@
           <div class="col-md-3">
             <table>
               <tr>
-               <!-- <td style="width: 200px;">
+                <td style="width: 200px;">
                   <a href="#main/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-home" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
                 </td>
                   <td style="width: 200px;">
                   <a href="#main/{{profile_name}}" style="padding-right:30px;">Main</a>
-                </td>-->
+                </td>
                <td style="width: 200px;">
                   <a href="#leadboard/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-bars" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
                 </td>
@@ -342,10 +346,10 @@
                   <a href="#votes/{{profile_name}}" style="padding-right:30px;">Dash</a>
                 </td>
                  <td style="width: 200px;">
-                  <a href="#about" style="padding-right:30px;"><i class="fa fa-question" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
+                  <a href="#match/{{profile_name}}" style="padding-right:30px;"><i class="fa fa-question" aria-hidden="true" style="margin-right:5px; padding-left:10px;  "></i></a>
                 </td>
                   <td style="width: 200px;">
-                  <a href="#about" style="padding-right:30px;">About</a>
+                  <a href="#match/{{profile_name}}" style="padding-right:30px;">About</a>
                 </td>
               </tr>
             </table>
