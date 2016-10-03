@@ -2,10 +2,10 @@
   <div class="line_dialog">
   <h2><strong>Welcome</strong> Summoner</h2>
   </div>
-  <img src="static/heart_screen.png" alt="" class="img_text"/>
-  <h3 class="h2_text"><strong>This is the place where you validate your messages. That means every message you don't want to keep you can simply ignore and it will pernamently deleted. This system exist to protect players from harmfull messages.To view a message simple click on View message button but be advice that it may be harmful. If you like the message you can click on the checkbox. After you are done reweing your messages clic on the button on bottom to keep the changes.</h3>
-  <div><button ng-click="closeDialog()"class="action" data-dialog-close>KK</button></div>
-  </div>
+
+  <h3 class="h2_text"><strong>Here u can view your messages from the last game. If you ignore the message it will be pernamently deleted. If you think the message might be harmful just ignore it.</h3>
+  <div><button ng-click="closeDialog()"class="action" data-dialog-close>Login</button></div>
+</div>
 <h1 class=" ele">
   Please wait
 </h1>
@@ -54,7 +54,7 @@
 Thank you for making league community a better place.
 </div>
 <div class="vote_banner remove"  style="left: 38%;">
-You have <span style="color:rgb(255,64,129);">4</span> new messages!
+You have <span style="color:rgb(255,64,129);">{{votes_number}}</span> new messages!
 </div>
 <div class="" id="match" style="margin-top:2%;">
 
@@ -121,10 +121,8 @@ You have <span style="color:rgb(255,64,129);">4</span> new messages!
 
 </div>
 <div class="pagi remove">
-       <p id="0"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
-       <p id="1"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
-       <p id="2"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
-       <p id="3"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;"></p>
+       <p id="0"  class="col-md-4 kda_text_more kda_text" style="opacity:0.5;" ng-repeat='number in vote_num'></p>
+ 
 
 </div>
 

@@ -1,10 +1,14 @@
 
 
 var landingControllers = angular.module('landingControllers', []);
-landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$rootScope','$cookies' ,
-  function($scope,$location, $http,$rootScope,$cookies) {
+landingControllers.controller('LandingCtrl', ['$scope','$location', '$http','$rootScope','$cookies' ,'CheckName',
+  function($scope,$location, $http,$rootScope,$cookies,CheckName) {
 
-
+var snackbarContainer;
+       setTimeout(function()
+                { 
+  snackbarContainer = document.querySelector('#demo-snackbar-example');
+  },501);
 var scroll_con=0;
 $scope.pagi1=0;
 $("#"+$scope.pagi1).addClass("active");
@@ -168,7 +172,7 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
           console.log(container);
 
            $("#container").addClass("container--open");
-	         $(".trigger").animate({"top": '50%'},900);
+	         $(".trigger").animate({"top": '44 %'},900);
 
            $(".input_index").addClass("input_line_move");
            $(".toggle_main_line").addClass("match_line_move");
@@ -208,11 +212,8 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
               var newvalueY = height * pageY * -1 - 50;
               $('#top-image').css("background-position", newvalueX+"px     "+newvalueY+"px");
     });
-      var snackbarContainer = document.querySelector('#demo-snackbar-example');
-      var showSnackbarButton = document.querySelector('#demo-show-snackbar');
-      var handler = function(event) {
-        showSnackbarButton.style.backgroundColor = '';
-      };
+ 
+  
     $("#content").removeClass("content_main");
     $("#content").addClass("content_index");
     $scope.className = "overlay";
@@ -222,29 +223,34 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
     }
     $scope.showProgress=function() {
 
-
-        $http({
-          method: 'GET',
-          url: 'https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/'+$("#sample3").val()+'?api_key=172d9054-b070-449d-bb68-cbbe94f29e7c'
-        }).then(function successCallback(response) {
-           console.log(response);
-           $("#content").addClass("content_main");
-        $("#content").removeClass("content_index");
+  var json_data={name:$("#sample3").val()};
+   console.log($("#sample3").val());
+    CheckName.query(json_data,function(data) {
+          
+           if (data[0]=="ok") {
+             $("#content").addClass("content_main");
+             $("#content").removeClass("content_index");
+             $cookies.put("search",$("#sample3").val());
+             $rootScope.profile_name=$("#sample3").val();
              $location.path('/match/'+  $("#sample3").val());
-          }, function errorCallback(response) {
 
-               var data = {
+           }
+         else
+         {
+
+
+          var data = {
           message: 'Summoner not found!',
           timeout: 4000,
-          actionHandler: handler,
-          actionText: 'Ok'
+    
         };
         snackbarContainer.MaterialSnackbar.showSnackbar(data);
-          });
+     }
 
 
-        document.getElementById("p2").style.visibility = "visible";
-    }
+        
+    });
+  }
     $scope.myFunction=function() {
 
         $scope.className = "overlay open";
@@ -252,11 +258,7 @@ $(window).bind('mousewheel DOMMouseScroll', function(event){
     }
 
 
-      showSnackbarButton.addEventListener('click', function() {
-        'use strict';
 
-
-     });
 
 
 

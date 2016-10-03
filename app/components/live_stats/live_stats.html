@@ -1,4 +1,8 @@
-<div class="loader" ng-if='loading_data==true'>
+<h1 class=" ele">
+  Please wait
+</h1>
+<div class="loader">
+
   <svg version="1.1" id="L7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
    <path fill="#ff4081" d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3
@@ -36,26 +40,34 @@
     </path>
   </svg>
 </div>
+</div>
 <!--<div class="toggle_live_buttons" ng-if='loading_data==false && no_game==false'>
   <button  ng-click="toggle_live('champ-panel')" class="mdl-tabs__tab is-active">Champ</button>
   <button  ng-click="toggle_live('main-panel')" class="mdl-tabs__tab">Overall</button>
 </div>-->
+<div class="animate_el">
 <div class="no_game" ng-if='no_game==true'>
-No active game found!
+<div style="margin-bottom:10%;">
+    No active game found!
 </div>
-<div class="right_stats">
+Featured list:
+<div ng-repeat="champion in featured_list | limitTo:5:1" class="featured">
+  <a href=#livestats/{{champion}}>{{champion}}</a>
+</div>
+</div>
+ <!--<div class="right_stats" ng-if='game==true'>
   <h1>Important facts</h1>
   <table>
-    <tr><td>Biggest kda<span class="kdd">:</span> dd</td></tr>
-    <tr><td>Biggest kda:</td></tr>
+    <tr ng-repeat='fact in facts'><td>{{fact.fact}}<span class="kdd">:</span> {{fact.value}}</td></tr>
+   
   </table>
 
-</div>
+</div>-->
     <div class="match" id="match" style="margin-top:3%;">
 
     <table >
 
-    <tr class="role">
+  <!--  <tr class="role">
       <td >
       TOP
       </td>
@@ -76,7 +88,7 @@ JUNGLE
       </td>
 
 
-      </tr>
+      </tr>-->
     <tr>
       <td   ng-repeat="champion in live_stats | limitTo:5">
 
@@ -274,7 +286,7 @@ JUNGLE
         </div>
 
   </div>
-
+</div>
 
 
 

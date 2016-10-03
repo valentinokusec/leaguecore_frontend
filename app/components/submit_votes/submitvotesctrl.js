@@ -4,12 +4,19 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
   function($scope,$routeParams,$location, $http,$rootScope,$cookies,GetVotesForSubmit,SumitVotes) {
 
 
-    var first_time = $cookies.get('first_time');
-
+    var first_time = $cookies.get('ft_submit');
+    var logged = $cookies.get('logged_in');
     $(".dialog_submit").hide();
     $(".loader").hide();
     $(".dialog_match").hide();
     $(".ele").addClass("anim");
+    if (logged==null) {
+        $(".overlay_black").fadeIn();
+        $(".dialog_submit").show();
+        $(".h2_text").text("You must sign in first");
+        $(".h2_text").css("padding-left","170px");
+        $(".dialog_submit").addClass("anim_resize");
+    }
     setTimeout(
           function()
           {
@@ -88,17 +95,31 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
     $scope.submitVotes=function()
       {
           console.log($scope.id_data);
-            var json_data=$scope.id_data;
-            SumitVotes.query(json_data,function(data) {
-               console.log(data);
-                if (data[0]=="ok") {
+          var json_data=$scope.id_data;
+          console.log(json_data);
+           $cookies.put('ft_submit',"true");
+          SumitVotes.query(json_data,function(data) {
+          console.log(data);
+              
                    $(".remove").fadeOut();
                     $("#match").fadeOut();
                     $scope.ok_message=true;
                     $("#submit_votes").fadeOut();
                       $scope.votes_submited=true;
-                }
-            });
+                
+            }
+
+ , function(error) {
+    
+          $(".remove").fadeOut();
+                    $("#match").fadeOut();
+                    $scope.ok_message=true;
+                    $("#submit_votes").fadeOut();
+                      $scope.votes_submited=true;
+                
+
+   }
+            );
       }
     $scope.vote_data=function(target)
       {
@@ -113,7 +134,7 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
                 },801);
             console.log(target);
             $scope.id_data.data.push(target);
-            $scope.id_data.data.push(target);
+            
       }
       $scope.last_table;
 
@@ -132,16 +153,104 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
         $('#p2').css("visibility","hidden");
         $("#0").addClass("active");
         $scope.loading_data=false;
+        $scope.vote_num=data;
+        console.log(data);
         $scope.votes=data[$scope.pagination];
         $scope.votes_number=data.length;
-        console.log($scope.votes);
+        if (data[0]=="nodata") {
+             console.log(data);
+         
+           if (first_time==null) {
+            $scope.votes={'from':'LeagueCore','to':$scope.summoner,'data':'Welcome'}
+            $(".img_card_main_match").attr('src',"static/logo1.png");
+
+            console.log(data);
+           }
+           else
+           {
+
+           $(".remove").fadeOut();
+            $("#match").fadeOut();
+            $scope.ok_message=true;
+            $("#submit_votes").fadeOut();
+              $scope.votes_submited=true;
+             $scope.votes=="no_data";
+           }
+        }
+        else
+        {
+        console.log(data);
+        for (var i = 0; i <data.length; i++) {
+         console.log(data);
+          if (data[i].confirmed==true) {
+             console.log(data[0].confirmed);
+             $scope.votes="no_data";
+             if (first_time==null) {
+                $scope.votes={'from':'LeagueCore','to':$scope.summoner,'data':'Welcome','confirmed':false}
+                $(".img_card_main_match").attr('src',"static/logo1.png");
+                console.log($scope.votes);
+                 if ($scope.votes.confirmed==true) {
+
+          $(".ok_button").css("background-color","#374d5a");
+           $(".ok_button").attr('disabled', 'disabled');
+        }
+        $scope.votes_number=data.length;
+      
         var left;
-            for (var i = 0; i<4; i++) {
-              console.log($('.pagi').offset().left);
+            for (var i = 0; i< $scope.votes_number; i++) {
+              
                left =$('.pagi').offset().left-23;
-              console.log(left);
+             
               $('.pagi').css('left',left);
             }
+             $scope.votes_number=data.length;
+            setTimeout(
+                  function()
+                  {
+
+            if (first_time==null) {
+               
+                  {
+
+                    $(".overlay_black").fadeIn();
+                    $(".dialog_submit").show();
+
+                    $(".dialog_submit").addClass("anim_resize");
+                  }
+            }
+              }, 1000);
+             }
+             else
+             {
+                $(".remove").fadeOut();
+                $("#match").fadeOut();
+                $scope.ok_message=true;
+                $("#submit_votes").fadeOut();
+                $scope.votes_submited=true;
+                $(".no_game").text("You already voted for your last game");
+             }
+
+             
+             
+          }
+          else
+          {
+             console.log(first_time);
+          if ($scope.votes.confirmed==true) {
+
+          $(".ok_button").css("background-color","#374d5a");
+          $(".ok_button").attr('disabled', 'disabled');
+        }
+        $scope.votes_number=data.length;
+      
+        var left;
+            for (var i = 0; i< $scope.votes_number; i++) {
+              
+               left =$('.pagi').offset().left-23;
+             
+              $('.pagi').css('left',left);
+            }
+             $scope.votes_number=data.length;
             setTimeout(
                   function()
                   {
@@ -157,11 +266,18 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
                   }
             }
               }, 1000);
+          }
+        }
+       }
+     
     });},1000);
     $scope.closeDialog=function()
       {
         $(".overlay_black").fadeOut();
         $(".dialog_submit").fadeOut();
           $(".dialog_submit").removeClass("anim_resize");
+          if (logged==null) {
+            $location.path( "/login" );
+          }
       }
     }]);

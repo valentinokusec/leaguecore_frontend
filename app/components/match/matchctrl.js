@@ -5,8 +5,15 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
 
 
 
+     var logged = $cookies.get('logged_in');
 
-
+     if (logged==null) {
+        $rootScope.log="Login";
+     }
+     else
+     {
+       $rootScope.log="Logout";
+     }
     var first_time = $cookies.get('first_time');
 
 
@@ -21,7 +28,7 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
       $scope.summoner=$routeParams.summoner;
       $scope.json_array_data=[];
       $scope.id_data=[];
-      $rootScope.profile_name=$scope.summoner;
+      //$rootScope.profile_name=$scope.summoner;
       $scope.ok_message=false;
       $scope.votes_submited=false;
       var match_id;
@@ -37,7 +44,7 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
       $("#player_9").find("textarea").hide();
       $("#player_10").find("textarea").hide();
       $("#match").css('opacity',"0");
-      $("#team_1_player_1").hover(function () {
+      /*$("#team_1_player_1").hover(function () {
 
          $("#stats_match_1").slideToggle("fast");
        });
@@ -80,12 +87,23 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
            $("#team_1_player_10").hover(function () {
 
          $("#stats_match_10").slideToggle("fast");
-       });
+       });*/
       $scope.loading_data=true;
       $('#p2').css("visibility","visible");
       var counter=0;
       $scope.submitVotes=function()
-        {
+        {     
+              if (logged==null) {
+        $(".overlay_black").fadeIn();
+        $(".dialog_match").show();
+        $(".h2_text").text("You must sign in first");
+        $(".h2_text").css("padding-left","50px");
+        $(".dialog_match").addClass("anim_resize");
+    }
+    else
+    {
+
+
               for (var i = 0; i < $scope.id_data.length; i++) {
               var json_data={name:$('#name_'+$scope.id_data[i]).text(),data:$('#textarea_'+$scope.id_data[i]).val()};
               $scope.json_array_data.push(json_data);
@@ -114,12 +132,15 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
                           }, 1000);
                   }
               });
+              }
+
         }
         $scope.closeDialog=function()
           {
+          
             $(".overlay_black").fadeOut();
             $(".dialog_match").fadeOut();
-              $(".dialog_match").removeClass("anim_resize");
+            $(".dialog_match").removeClass("anim_resize");
           }
       $scope.vote=function(target)
         {

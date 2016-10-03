@@ -13,3 +13,9 @@ authservice.factory('SignUp', ['$resource',
       return $resource('http://localhost:8081/signin');
 
     }]);
+ authservice.factory('CheckName', ['$resource',
+    function($resource){
+
+      return $resource('http://localhost:8081/checkname');
+
+    }]);

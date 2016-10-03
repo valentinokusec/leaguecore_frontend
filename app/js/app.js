@@ -24,6 +24,7 @@ var app = angular.module('app', [
   'notificationModule',
   'ngCookies',
 
+
 ]);
 
 app.config(['$routeProvider',
@@ -38,6 +39,10 @@ app.config(['$routeProvider',
         templateUrl: 'components/live_stats/live_stats.html',
         controller: 'LiveStatsCtrl',
       }).
+        when('/about', {
+        templateUrl: 'components/about/about.html',
+      
+      }).
       when('/index', {
         templateUrl: 'components/index/landing0.html',
         controller: 'LandingCtrl',
@@ -51,6 +56,10 @@ app.config(['$routeProvider',
         controller: 'VotesCtrl'
       }).
       when('/leadboard/:summoner', {
+        templateUrl: 'components/leadboard/leadboard.html',
+        controller: 'LeadBoardCtrl'
+      }).
+       when('/leadboard', {
         templateUrl: 'components/leadboard/leadboard.html',
         controller: 'LeadBoardCtrl'
       }).
@@ -84,11 +93,22 @@ app.config(['$routeProvider',
       positionY: 'top'
     });
   });
-  app.run( function($rootScope, $location, $cookies, $routeParams,GetRandomMessage) {
+  app.run( function($rootScope, $location, $cookies, $routeParams,GetRandomMessage,$route) {
 
 
     $rootScope.$on("$routeChangeStart", function(args){
 
+      
+         if (logged==null) {
+      $rootScope.log="Login"
+
+    }
+    else
+    {
+   
+         $rootScope.log="Logout"
+       
+    }
 
       if ($location.path()=="/index" || $location.path()=="/login") {
       $rootScope.show_index=true;
@@ -100,24 +120,48 @@ app.config(['$routeProvider',
             $rootScope.summoner=$routeParams.summoner;
             var  s1=$location.path().substring(1, $location.path().size);
             var s2=s1.substring(s1.indexOf('/')+1, $location.path().size);
-            console.log($location.path());
+            
             $rootScope.profile_icon;
             $rootScope.profile_name;
             $rootScope.champion;
             $rootScope.loading_data=true;
             var json_data={name:s2};
-              console.log(json_data);
+     
 
-      get_data(json_data);
+        get_data(json_data);
 
       }
     })
     $rootScope.summoner=$routeParams.summoner;
     var  s1=$location.path().substring(1, $location.path().size);
     var s2=s1.substring(s1.indexOf('/')+1, $location.path().size);
-    console.log($location.path());
+    $rootScope.profile_name=$cookies.get("search");
+    console.log(s2);
     $rootScope.profile_icon;
-    $rootScope.profile_name=s2;
+    var logged = $cookies.get('logged_in');
+    $rootScope.auth=function()
+    {
+        if (logged==null) {
+             $location.path( "/login");
+        }
+        else
+        {
+          
+          $cookies.remove("logged_in");
+          $rootScope.log="Login"
+          $location.path( "/leadboard");
+        }
+    }
+    if (logged==null) {
+      $rootScope.log="Login"
+  
+    }
+    else
+    {
+         $rootScope.log="Logout"
+       
+    }
+   
     $rootScope.champion;
 
     $rootScope.message;
@@ -131,7 +175,14 @@ app.config(['$routeProvider',
       $rootScope.message=data[0];
       $rootScope.stats=data[1][0];
 
-      console.log(  $rootScope.stats);
+      $rootScope.display=data[0].data;
+
+      if ($rootScope.display.length>8) {
+         console.log($rootScope.display.length);
+         $rootScope.display= $rootScope.display.substring(0,6)+"..";
+         console.log($rootScope.display);
+      }
+     
       $("#message").fadeIn();
 
         // $rootScope.champion=data[0].champion_list[0];
@@ -159,17 +210,17 @@ setTimeout(function(){   get_data(json_data); }, 6000);
    });
   }
    $(".logo").hover(function () {
-      console.log("dsa");
+     
       $(".logo").animate({"width":"100px"});
     });
   setTimeout(function(){
 
     $("#message_index1").hover(function () {
-      console.log("dsa");
+      console.log("dd");
       $("#stats_index").slideToggle("fast");
     });
       $("#profile_info").hover(function () {
-      console.log("dsa");
+     
       $("#stats_profile1").slideToggle("fast");
     }); }, 1000);
 

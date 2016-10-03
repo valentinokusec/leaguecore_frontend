@@ -1,8 +1,17 @@
 
 var leadboardControllers = angular.module('leadboardControllers', []);
-leadboardControllers.controller('LeadBoardCtrl', ['$scope','$location', '$http','$rootScope','$cookies','GetVotesFromLeadbard','GetVotesForSummoner',
-  function($scope,$location, $http,$rootScope,$cookies,GetVotesFromLeadbard,GetVotesForSummoner) {
+leadboardControllers.controller('LeadBoardCtrl', ['$scope','$routeParams','$location', '$http','$rootScope','$cookies','GetVotesFromLeadbard','GetVotesForSummoner','$rootScope',
+  function($scope,$routeParams,$location, $http,$rootScope,$cookies,GetVotesFromLeadbard,GetVotesForSummoner,$rootScope) {
 
+     var logged = $cookies.get('logged_in');
+     if (logged==null) {
+        $rootScope.log="Login";
+     }
+     else
+     {
+       $rootScope.log="Logout";
+     }
+    $scope.summoner=$routeParams.summoner;
     $("#search_result").hide();
     $scope.loading_data=true;
     $scope.show_search=false;
@@ -15,10 +24,20 @@ leadboardControllers.controller('LeadBoardCtrl', ['$scope','$location', '$http',
     $('#decrease_pagination').css("display","none");
     var json_data={pagination:1};
     GetVotesFromLeadbard.query(json_data,function(data) {
-        console.log(data);
+        
         $scope.data=data;
        pagin=$scope.data.length/8;
+      var json_data={name:$scope.summoner};
 
+      for (var i = 0; i < $scope.data.length; i++) {
+        console.log($scope.data[i].name); 
+        if ($scope.data[i].name==$scope.summoner) {
+           
+           $scope.summoner_data=$scope.data[i];
+
+            $("#search_result").fadeIn();
+        }
+      }
         $scope.loading_data=false;
     });
     $scope.getVotes=function()

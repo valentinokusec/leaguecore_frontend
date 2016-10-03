@@ -5,6 +5,15 @@ body
   margin: 0;
   font-family: 'Baloo Tamma', cursive ;
 }
+.about
+{
+  margin-left: 20px;
+}
+.about h1
+{
+ color: rgb(255,64,129);
+ font-weight: bold;
+}
 .headlines
 {
   padding-top: 50px;
@@ -44,10 +53,16 @@ color: #374d5a;
 font-size: 40px;
 font-weight: bold;
 }
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
 .no_game
 {
+  text-align: center;
+margin-bottom: 10%;
 position: absolute;
-top: 40%;
+top: 30%;
 left: 36%;
 color: #374d5a;
 font-size: 40px;
@@ -265,7 +280,12 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
       left:26%;
       height:500px;
     }
-
+ .dialog_login
+    { width: 300px;
+      top: 5%;
+      left:36%;
+      height:200px;
+    }
   .message_main_votes
   {
     width: 300px !important;
@@ -1492,6 +1512,25 @@ background-color: white;
 
      display:none;
 }*/
+.featured
+{
+
+    text-align: center;
+     
+   }
+   .featured a
+{
+     color: #374d5a !important;
+   
+    
+     text-decoration: none;
+   }
+   .featured:hover
+  {
+
+    text-decoration: none;
+     transform: scale(1.1);
+   }
 .role
 {
      color: #374d5a !important;
@@ -1592,7 +1631,7 @@ margin-left: 5px;
 }
 .trigger {
   position: absolute !important;
-  bottom: 15px;
+  bottom: 35px;
   left: 115px;
   z-index: 1000;
   background-color: rgb(255,64,129) !important;
@@ -1825,7 +1864,7 @@ border-top: 1px solid gray;
   padding-bottom: 5px;
   position:absolute;
   bottom: 6%;
-  left: 48% !important;
+  left: 47% !important;
   background-color: #ff4081;
   border-radius: 200px 200px 200px 200px;
 -moz-border-radius: 200px 200px 200px 200px;
