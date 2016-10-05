@@ -92,7 +92,7 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
       $('#p2').css("visibility","visible");
       var counter=0;
       $scope.submitVotes=function()
-        {     
+        {
               if (logged==null) {
         $(".overlay_black").fadeIn();
         $(".dialog_match").show();
@@ -122,6 +122,7 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
                         if (first_time==null) {
                               console.log(first_time);
                               {
+                                $cookies.put('first_time','true');
                                 $(".img_text").attr('src',"static/message_screen.png");
                                 $(".overlay_black").fadeIn();
                                 $(".dialog_match").show();
@@ -137,7 +138,7 @@ matchControllers.controller('MatchCtrl', ['$scope','$routeParams','$location', '
         }
         $scope.closeDialog=function()
           {
-          
+
             $(".overlay_black").fadeOut();
             $(".dialog_match").fadeOut();
             $(".dialog_match").removeClass("anim_resize");
