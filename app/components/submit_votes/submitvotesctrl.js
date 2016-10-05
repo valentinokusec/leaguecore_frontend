@@ -17,6 +17,23 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
         $(".h2_text").css("padding-left","170px");
         $(".dialog_submit").addClass("anim_resize");
     }
+    else {
+      setTimeout(
+            function()
+            {
+
+      if (first_time==null) {
+
+            {
+
+              $(".overlay_black").fadeIn();
+              $(".dialog_submit").show();
+
+              $(".dialog_submit").addClass("anim_resize");
+            }
+      }
+        }, 1000);
+    }
     setTimeout(
           function()
           {
@@ -100,23 +117,23 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
            $cookies.put('ft_submit',"true");
           SumitVotes.query(json_data,function(data) {
           console.log(data);
-              
+
                    $(".remove").fadeOut();
                     $("#match").fadeOut();
                     $scope.ok_message=true;
                     $("#submit_votes").fadeOut();
                       $scope.votes_submited=true;
-                
+
             }
 
  , function(error) {
-    
+
           $(".remove").fadeOut();
                     $("#match").fadeOut();
                     $scope.ok_message=true;
                     $("#submit_votes").fadeOut();
                       $scope.votes_submited=true;
-                
+
 
    }
             );
@@ -134,7 +151,7 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
                 },801);
             console.log(target);
             $scope.id_data.data.push(target);
-            
+
       }
       $scope.last_table;
 
@@ -159,7 +176,7 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
         $scope.votes_number=data.length;
         if (data[0]=="nodata") {
              console.log(data);
-         
+
            if (first_time==null) {
             $scope.votes={'from':'LeagueCore','to':$scope.summoner,'data':'Welcome'}
             $(".img_card_main_match").attr('src',"static/logo1.png");
@@ -195,30 +212,16 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
            $(".ok_button").attr('disabled', 'disabled');
         }
         $scope.votes_number=data.length;
-      
+
         var left;
             for (var i = 0; i< $scope.votes_number; i++) {
-              
+
                left =$('.pagi').offset().left-23;
-             
+
               $('.pagi').css('left',left);
             }
              $scope.votes_number=data.length;
-            setTimeout(
-                  function()
-                  {
 
-            if (first_time==null) {
-               
-                  {
-
-                    $(".overlay_black").fadeIn();
-                    $(".dialog_submit").show();
-
-                    $(".dialog_submit").addClass("anim_resize");
-                  }
-            }
-              }, 1000);
              }
              else
              {
@@ -230,8 +233,8 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
                 $(".no_game").text("You already voted for your last game");
              }
 
-             
-             
+
+
           }
           else
           {
@@ -242,12 +245,12 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
           $(".ok_button").attr('disabled', 'disabled');
         }
         $scope.votes_number=data.length;
-      
+
         var left;
             for (var i = 0; i< $scope.votes_number; i++) {
-              
+
                left =$('.pagi').offset().left-23;
-             
+
               $('.pagi').css('left',left);
             }
              $scope.votes_number=data.length;
@@ -269,7 +272,7 @@ submitvotesControllers.controller('SubmitVotesCtrl', ['$scope','$routeParams','$
           }
         }
        }
-     
+
     });},1000);
     $scope.closeDialog=function()
       {
